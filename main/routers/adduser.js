@@ -23,9 +23,8 @@ router.post('/',jsonParser,function(req,res){
         if(err){
             console.log(err);
         }
-        let json = JSON.parse(body);
-        console.log(json);
-        res.json(json);
+        console.log(body);
+        res.json(body);
     });
 });
 
