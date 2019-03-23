@@ -11,22 +11,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
-    var options = {  
-        url: process.env.SERVER_USER,
-        path: '/adduser',
-        method: 'POST',
-        json: data
-    };
-    //send request to USER server
-    request(options, function(err, response, body) {  
-        if(err){
-            console.log(err);
-        }
-        let json = JSON.parse(body);
-        console.log(json);
-        res.json(json);
-    });
+    console.log(req.body);
+    res.json({"user":"a","email":"aa"})
 });
 
 
