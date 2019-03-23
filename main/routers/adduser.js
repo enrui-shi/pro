@@ -13,14 +13,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.post('/',jsonParser,function(req,res){
     data = req.body;
     var options = {  
-        url: process.env.SERVER_USER,
-        path: '/adduser',
+        url: process.env.SERVER_USER+"/adduser",
         method: 'POST',
         json: data
     };
     //send request to USER server
     request(options, function(err, response, body) {  
         if(err){
+            console.log("ERROR")
             console.log(err);
         }
         console.log(body);
