@@ -11,8 +11,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
-    console.log("data"+data);
+    data = req.body[0];
+    console.log("data: "+data);
     res.json({"user":"a","email":"aa"})
 });
 
