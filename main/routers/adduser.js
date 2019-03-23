@@ -12,6 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/',jsonParser,function(req,res){
     data = req.body;
+    console.log("data: ", data)
     var options = {  
         url: process.env.SERVER_USER+"/adduser",
         method: 'POST',
@@ -23,7 +24,7 @@ router.post('/',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log(body);
+        console.log("req: ",body);
         res.json(body);
     });
 });
