@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 const path = require('path');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 
 // create application/json parser
 var jsonParser = bodyParser.json()
