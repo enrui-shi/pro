@@ -11,7 +11,7 @@ require('dotenv').config()
 var login = require('./routers/login.js');
 var logout = require('./routers/logout.js');
 var adduser = require('./routers/adduser.js');
-
+var verify = require('./routers/verify.js');
 //api endpoint
 app.use('/login', login);
 app.use('/adduser', adduser);
