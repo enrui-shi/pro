@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 3000;
+const MongoClient = require('mongodb').MongoClient;
 
 //get env
 require('dotenv').config()
@@ -18,6 +19,17 @@ app.use('/adduser', adduser);
 app.use('/verify', verify);
 app.use('/logout', logout);
 
-app.listen(port,'0.0.0.0', () => {
-    return console.log(`App listening on port ${port}!`);
-})
+MongoClient.connect(process.env.MONGO_ADDRESS, (err, client) => {
+    // ... start the server
+    if(err){
+        console.log(err);
+    }else{
+        console.log("success connet to db pro");
+    }
+    db = client.db('pro');
+    //console.log(db);
+    app.locals.db = db;
+    app.listen(port,'0.0.0.0', () => {
+        return console.log(`App listening on port ${port}!`);
+    })
+  })
