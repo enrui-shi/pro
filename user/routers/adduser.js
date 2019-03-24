@@ -23,7 +23,7 @@ router.post('/',jsonParser,function(req,res){
         if (err) {
             console.log(err);
             json.status="ERROR";
-            res.json({"error":err})
+            res.json({'status':"OK","error":err})
         }else{
             console.log(data.username+" signed up");
             sendMail(data);
@@ -55,7 +55,7 @@ function sendMail(data){
         from: 'cse356test@gmail.com',
         to: data.email,
         subject: "verify code",
-        text: "key"+data.key
+        text: "validation key: <"+data.key+">"
     };
 
     transporter.sendMail(mailOpton, function(error, info){
@@ -63,6 +63,6 @@ function sendMail(data){
           console.log("error is:");
           console.log(error);
         } 
-          else{console.log('Email sent to :',data.mail)}
+          else{console.log('Email sent to :',data.email)}
         });
 }

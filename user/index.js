@@ -3,7 +3,12 @@ const app = express();
 const path = require('path');
 const port = 3000;
 const MongoClient = require('mongodb').MongoClient;
-
+//session
+var cookieSession = require('cookie-session');
+app.use(cookieSession({
+    name: 'session',
+    keys: ['lalala'],
+  }))
 //get env
 require('dotenv').config()
 //file dependecy
