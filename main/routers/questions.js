@@ -69,6 +69,8 @@ router.get('/:id',jsonParser,function(req,res){
         res.json(body);
     });
 });
+
+
 router.get('/:id/answers',jsonParser,function(req,res){
     console.log("data: ", data)
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";

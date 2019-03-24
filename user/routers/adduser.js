@@ -17,7 +17,20 @@ router.post('/',jsonParser,function(req,res){
     data['valide'] = "false";
     data['key'] = Math.floor((Math.random() * 8999) + 1000);
     console.log("data: ", data)
-    res.json(data);
+    var db = req.app.locals.db;
+    //add user to database
+    db.collection("user").insertOne(data, function(err, a) {
+        if (err) {
+            console.log(err);
+            json.status="ERROR";
+            res.json({"error":err})
+        }else{
+            console.log(data.username+" signed up");
+            sendMail(data);
+            res.json(json);
+        }
+        
+      });
 });
 
 
