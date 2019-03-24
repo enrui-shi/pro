@@ -23,10 +23,10 @@ router.post('/',jsonParser,function(req,res){
                 //login
                 req.session.current_user = result.username;
                 req.session.status = 'online';
-                console.log(req.session.current_user+"logined");
+                console.log(req.session.current_user+" logined");
                 res.json(json);
             }else{
-                console.log(result.username+'false to login');
+                console.log(result.username+' false to login');
                 res.json({'status':"error","error":'wrong password or account not valide'})
             }
         }else{
