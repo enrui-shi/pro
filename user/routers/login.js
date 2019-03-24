@@ -21,9 +21,7 @@ router.post('/',jsonParser,function(req,res){
             result = result[0];
             if(result.password == data.password && result.valide == 'true'){
                 //login
-                req.session.current_user = result.username;
-                req.session.status = 'online';
-                console.log(req.session.current_user+" logined");
+                console.log(result.username+" logined");
                 res.json(json);
             }else{
                 console.log(result.username+' false to login');

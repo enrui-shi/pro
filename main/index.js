@@ -6,7 +6,11 @@ const port = 3000;
 //get env
 require('dotenv').config()
 //file dependecy
-
+var cookieSession = require('cookie-session');
+app.use(cookieSession({
+    name: 'session',
+    keys: ['lalala'],
+  }))
 //routers
 var login = require('./routers/login.js');
 var logout = require('./routers/logout.js');

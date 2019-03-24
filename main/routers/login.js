@@ -26,6 +26,10 @@ router.post('/',jsonParser,function(req,res){
             console.log(err);
         }
         console.log("req: ",body);
+        if(body.status=='OK'){
+            req.session.current_user = data.username;
+            req.session.status = 'online';
+        }
         res.json(body);
     });
 });
