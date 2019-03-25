@@ -27,7 +27,7 @@ router.post('/',jsonParser,function(req,res){
                     })
                     res.json({'status':"OK"});
                 }else{
-                    res.json({'status':'ERROR','error':'wrong key'})
+                    res.json({'status':'error','error':'wrong key'})
                 }
             }else{
                 res.json({'status':'error','error':'can not find email'})
