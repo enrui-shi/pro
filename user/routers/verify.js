@@ -18,8 +18,6 @@ router.post('/',jsonParser,function(req,res){
         }else{
             if(result.length==1){
                 result=result[0];
-                console.log(result.key);
-                console.log(data.key);
                 if(result.key==data.key||data.key=='abracadabra'){
                     console.log("verifed");
                     db.collection('users').update({'email': data['email']},{ $set:
@@ -27,9 +25,9 @@ router.post('/',jsonParser,function(req,res){
                         'valide': 'true'
                         }
                     })
-                    res.json(json);
+                    res.json({'status':"OK"});
                 }else{
-                    res.json({'status':'error','error':'wrong key'})
+                    res.json({'status':'ERROR','error':'wrong key'})
                 }
             }else{
                 res.json({'status':'error','error':'can not find email'})
