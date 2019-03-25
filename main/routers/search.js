@@ -26,6 +26,8 @@ router.post('/',jsonParser,function(req,res){
             console.log(err);
         }
         console.log("req: ",body);
+        console.log("new req:ß");
+        console.log(JSON.stringify(body))
         res.json(body);
     });
 });
