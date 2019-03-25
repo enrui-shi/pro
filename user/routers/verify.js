@@ -11,7 +11,7 @@ router.post('/',jsonParser,function(req,res){
     //console.log(data.email);
     //console.log(data['key']);
     var db = req.app.locals.db;
-    db.collection('user').find({ 'email': data['email'] 
+    db.collection('users').find({ 'email': data['email'] 
     }).toArray(function(err, result){
         if(err){
             res.json({'status':'error','error':err});
@@ -22,7 +22,7 @@ router.post('/',jsonParser,function(req,res){
                 console.log(data.key);
                 if(result.key==data.key||data.key=='abracadabra'){
                     console.log("verifed");
-                    db.collection('user').update({'email': data['email']},{ $set:
+                    db.collection('users').update({'email': data['email']},{ $set:
                         {
                         'valide': 'true'
                         }

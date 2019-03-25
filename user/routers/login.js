@@ -15,7 +15,7 @@ router.post('/',jsonParser,function(req,res){
     data = req.body;
     json = {'status':"OK"};
     // 
-    db.collection('user').find({ 'username': data['username'] 
+    db.collection('users').find({ 'username': data['username'] 
     }).toArray(function(err, result){
         if(result.length==1){
             result = result[0];

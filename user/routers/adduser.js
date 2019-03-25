@@ -19,7 +19,7 @@ router.post('/',jsonParser,function(req,res){
     console.log("data: ", data)
     var db = req.app.locals.db;
     //add user to database
-    db.collection("user").insertOne(data, function(err, a) {
+    db.collection("users").insertOne(data, function(err, a) {
         if (err) {
             console.log(err);
             json.status="ERROR";
