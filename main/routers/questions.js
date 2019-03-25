@@ -10,7 +10,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/add',jsonParser,function(req,res){
     data = req.body;
-    data.curent_user = req.session.curent_user;
+    data.current_user = req.session.current_user;
     console.log("data: ", data);
     var forward_url = process.env.SERVER_QUESTION+"/questions/add"
     console.log('request send to ',forward_url);
@@ -33,7 +33,7 @@ router.post('/add',jsonParser,function(req,res){
 
 router.post('/:id/answers/add',jsonParser,function(req,res){
     data = req.body;
-    data.curent_user = req.session.curent_user;
+    data.current_user = req.session.current_user;
     console.log("data: ", data);
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers/add";
     console.log('request send to ',forward_url);
@@ -55,7 +55,7 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 
 router.get('/:id',jsonParser,function(req,res){
     data = req.body;
-    data.curent_user = req.session.curent_user;
+    data.current_user = req.session.current_user;
     console.log("data: ", data)
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id;
     console.log('request send to ',forward_url);
@@ -78,7 +78,7 @@ router.get('/:id',jsonParser,function(req,res){
 
 router.get('/:id/answers',jsonParser,function(req,res){
     data = req.body;
-    data.curent_user = req.session.curent_user;
+    data.current_user = req.session.current_user;
     console.log("data: ", data)
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";
     console.log('request send to ',forward_url);
