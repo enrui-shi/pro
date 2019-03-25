@@ -12,7 +12,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    json = {'status':"OK"};
     data = req.body;
     data['valide'] = "false";
     data['key'] = Math.floor((Math.random() * 8999) + 1000);
@@ -23,12 +22,11 @@ router.post('/',jsonParser,function(req,res){
     db.collection("users").insertOne(data, function(err, a) {
         if (err) {
             console.log(err);
-            json.status="ERROR";
-            res.json({'status':"OK","error":err})
+            res.json({'status':"error","error":err})
         }else{
             console.log(data.username+" signed up");
             sendMail(data);
-            res.json(json);
+            res.json({'status':"OK"});
         }
         
       });
