@@ -8,9 +8,9 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-router.get('/:user',jsonParser,function(req,res){
+router.get('/:username',jsonParser,function(req,res){
     data = req.body;
-    var forward_url = process.env.SERVER_QUESTION+"/user/"+req.params.user;
+    var forward_url = process.env.SERVER_USER+"/user/"+req.params.user;
     console.log('request send to ',forward_url);
     console.log("data: ", data)
     var options = {  
@@ -30,7 +30,7 @@ router.get('/:user',jsonParser,function(req,res){
 });
 router.get('/:user/questions',jsonParser,function(req,res){
     data = req.body;
-    var forward_url = process.env.SERVER_QUESTION+"/user/"+req.params.user+"/questions";
+    var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/questions";
     console.log('request send to ',forward_url);
     console.log("data: ", data)
     var options = {  
@@ -50,7 +50,7 @@ router.get('/:user/questions',jsonParser,function(req,res){
 });
 router.get('/:user/answers',jsonParser,function(req,res){
     data = req.body;
-    var forward_url = process.env.SERVER_QUESTION+"/user/"+req.params.user+"/answers";
+    var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/answers";
     console.log('request send to ',forward_url);
     console.log("data: ", data)
     var options = {  
