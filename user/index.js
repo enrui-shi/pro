@@ -19,6 +19,7 @@ app.use('/adduser', adduser);
 app.use('/verify', verify);
 app.use('/logout', logout);
 app.use('/user',user);
+
 MongoClient.connect(process.env.MONGO_ADDRESS, (err, client) => {
     // ... start the server
     if(err){
