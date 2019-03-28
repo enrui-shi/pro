@@ -1,7 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var path = require('path');
+var request = require('request');
+var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+// create application/json parser
 var jsonParser = bodyParser.json()
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 
 router.get('/:username',jsonParser,function(req,res){
     console.log("Recieve get")
