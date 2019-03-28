@@ -4,6 +4,7 @@ var router = express.Router();
 var jsonParser = bodyParser.json()
 
 router.get('/:username',jsonParser,function(req,res){
+    console.log("Recieve get")
     var username = req.params.username
     var db = req.app.locals.db
     db.collection('users').find({'username':username}).toArray(function(err,result){
