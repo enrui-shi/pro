@@ -98,13 +98,13 @@ router.get('/:id/answers',jsonParser,function(req,res){
     });
 });
 
-router.delet('/:id' ,jsonParser,function(req,res){
+router.delete('/:id' ,jsonParser,function(req,res){
     data = req.body;
     data.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+'questions/'+req.params.id;
     var options = {  
         url: forward_url,
-        method: 'DELET',
+        method: 'DELETE',
         json:data
     };
     console.log("request send to ", )
