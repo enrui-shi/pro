@@ -8,7 +8,7 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-router.get('/:username',jsonParser,function(req,res){
+router.get('/:user',jsonParser,function(req,res){
     data = req.body;
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user;
     console.log('request send to ',forward_url);
