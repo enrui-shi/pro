@@ -12,12 +12,13 @@ var login = require('./routers/login.js');
 var logout = require('./routers/logout.js');
 var adduser = require('./routers/adduser.js');
 var verify = require('./routers/verify.js');
+var user = require('./routers/user.js');
 //api endpoint
 app.use('/login', login);
 app.use('/adduser', adduser);
 app.use('/verify', verify);
 app.use('/logout', logout);
-
+app.use('/user',logout);
 MongoClient.connect(process.env.MONGO_ADDRESS, (err, client) => {
     // ... start the server
     if(err){
