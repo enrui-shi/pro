@@ -10,7 +10,10 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-
+router.get('/',function(req,res){
+    console.log("receive")
+    res.json({"s":"ok"})
+})
 router.get('/:username',jsonParser,function(req,res){
     console.log("Recieve get")
     var username = req.params.username
