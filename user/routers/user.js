@@ -13,6 +13,10 @@ router.get('/:username',jsonParser,function(req,res){
             var user = result[0]
             console.log(user.email)
             console.log(user.reputation)
+            delete user._id
+            delete user.username
+            delete user.key
+            delete user.valide
             res.json({'status':'OK','user':user})
         }
     });
