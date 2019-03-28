@@ -12,6 +12,7 @@ app.use(cookieSession({
     keys: ['lalala'],
   }))
 //routers
+var user = require('./routers/user.js');
 var login = require('./routers/login.js');
 var logout = require('./routers/logout.js');
 var adduser = require('./routers/adduser.js');
@@ -25,6 +26,7 @@ app.use('/verify', verify);
 app.use('/logout', logout);
 app.use('/questions',questions);
 app.use('/search',search);
+app.use('/user',user);
 
 app.get('/',function(req,res){
     res.send('INDEX page');

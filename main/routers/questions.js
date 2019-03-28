@@ -25,7 +25,7 @@ router.post('/add',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("req: ",body);
+        console.log("received: ",body);
         res.json(body);
     });
 });
@@ -48,7 +48,7 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("req: ",body);
+        console.log("received: ",body);
         res.json(body);
     });
 });
@@ -70,7 +70,7 @@ router.get('/:id',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("req: ",body);
+        console.log("received: ",body);
         res.json(body);
     });
 });
@@ -79,9 +79,9 @@ router.get('/:id',jsonParser,function(req,res){
 router.get('/:id/answers',jsonParser,function(req,res){
     data = req.body;
     data.current_user = req.session.current_user;
-    console.log("data: ", data)
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";
     console.log('request send to ',forward_url);
+    console.log("data: ", data)
     var options = {  
         url: forward_url,
         method: 'GET',
@@ -93,10 +93,29 @@ router.get('/:id/answers',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("req: ",body);
+        console.log("received: ",body);
         res.json(body);
     });
 });
 
+router.delet('/:id' ,jsonParser,function(req,res){
+    data = req.body;
+    data.current_user = req.session.current_user;
+    var forward_url = process.env.SERVER_QUESTION+'questions/'+req.params.id;
+    var options = {  
+        url: forward_url,
+        method: 'DELET',
+        json:data
+    };
+    console.log("request send to ", )
+    request(options, function(err, response, body) {  
+        if(err){
+            console.log("ERROR")
+            console.log(err);
+        }
+        console.log("received: ",body);
+        res.json(body);
+    });
+});
 
 module.exports = router;

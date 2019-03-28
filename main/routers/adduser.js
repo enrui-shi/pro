@@ -13,7 +13,10 @@ router.post('/',jsonParser,function(req,res){
     data = req.body;
     var forward_url = process.env.SERVER_USER+"/adduser";
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    if(process.env.DEBUG){
+        console.log("data: ", data)
+    }
+    
     var options = {  
         url: forward_url,
         method: 'POST',
