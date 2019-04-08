@@ -25,6 +25,7 @@ router.post('/',jsonParser,function(req,res){
             res.json({'status':"error","error":err})
         }else{
             console.log(data.username+" signed up");
+            console.log(a);
             sendMail(data);
             res.json({'status':"OK"});
         }
