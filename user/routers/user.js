@@ -5,9 +5,8 @@ var jsonParser = bodyParser.json()
 
 router.get('/:username',jsonParser,function(req,res){
     console.log("find a user")
-    var username = req.params.username
     var db = req.app.locals.db
-    db.collection('users').find({'username':username}).toArray(function(err,result){
+    db.collection('users').find({'username':req.params.username}).toArray(function(err,result){
         if(result.length != 1){
             return res.json({'status':'error','error':'user not found'})
         }else{
@@ -25,9 +24,8 @@ router.get('/:username',jsonParser,function(req,res){
 
 router.get('/:username/questions',jsonParser,function(req,res){
     console.log("find question posed by user")
-    var username = req.params.username
     var db = req.app.locals.db
-    db.collection('questions').find({'user.username':username}).toArray(function(err,result){
+    db.collection('questions').find({'user.username':req.params.username}).toArray(function(err,result){
         console.log(result.length)
         console.log(result)
         if(result.length == 0){
@@ -45,9 +43,8 @@ router.get('/:username/questions',jsonParser,function(req,res){
 });
 
 router.get('/:username/answers',jsonParser,function(req,res){
-    var username = req.params.username
     var db = req.app.locals.db
-    db.collection('questions').find({'answers.user':username}).toArray(function(err,result){
+    db.collection('questions').find({'answers.user':req.params.username}).toArray(function(err,result){
         console.log(result.length)
         if(result.length == 0){
             return res.json({'status':'OK', 'answer_ids':[]})

@@ -5,7 +5,6 @@ var router = express.Router();
 const path = require('path');
 
 router.post('/',jsonParser,function(req,res){
-    body = req.body;
     json = {'status':'OK'};
     console.log(body);
     //console.log(data.email);
@@ -18,11 +17,9 @@ router.post('/',jsonParser,function(req,res){
         }else{
             if(result.length==1){
                 result=result[0];
-                console.log("body: ",body.key);
-                console.log("req.body: ",req.body.key);
-                if(result.key==body.key||data.key=='abracadabra'){
+                if(result.key==req.body.key||req.body.key=='abracadabra'){
                     console.log("verifed");
-                    db.collection('users').update({'email': body['email']},{ $set:
+                    db.collection('users').update({'email': req.body['email']},{ $set:
                         {
                         'valide': 'true'
                         }

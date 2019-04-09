@@ -12,14 +12,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
     json = {'status':"OK"};
     // 
-    db.collection('users').find({ 'username': data['username'] 
+    db.collection('users').find({ 'username': req.body['username'] 
     }).toArray(function(err, result){
         if(result.length==1){
             result = result[0];
-            if(result.password == data.password && result.valide == 'true'){
+            if(result.password == req.body.password && result.valide == 'true'){
                 //login
                 console.log(result.username+" logined");
                 res.json(json);
