@@ -29,7 +29,7 @@ app.use('/search',search);
 app.use('/user',user);
 
 app.get('/',function(req,res){
-    res.send('INDEX page');
+    res.sendFile(path.join(__dirname+'/html/login.html'));
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
 app.listen(port,'0.0.0.0', () => {
