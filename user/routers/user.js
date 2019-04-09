@@ -47,7 +47,7 @@ router.get('/:username/answers',jsonParser,function(req,res){
     db.collection('questions').find({'answers.user':req.params.username}).toArray(function(err,result){
         console.log(result.length)
         if(result.length == 0){
-            return res.json({'status':'OK', 'answer_ids':[]})
+            return res.json({'status':'OK', 'answers':[]})
         }else if(result.length > 0){
             var answer_ids = []
             for(var i=0; i<result.length; i++){
@@ -56,7 +56,7 @@ router.get('/:username/answers',jsonParser,function(req,res){
                     answer_ids.push(result[i].answers[j].id)
                 }
             }
-            return res.json({'status':'OK', 'answer_ids': answer_ids})
+            return res.json({'status':'OK', 'answers': answer_ids})
         }else{
             return res.json({'status':'error','error':'wrong'})
         }
