@@ -18,6 +18,8 @@ router.post('/',jsonParser,function(req,res){
         }else{
             if(result.length==1){
                 result=result[0];
+                console.log("body: ",body.key);
+                console.log("req.body: ",req.body.key);
                 if(result.key==body.key||data.key=='abracadabra'){
                     console.log("verifed");
                     db.collection('users').update({'email': body['email']},{ $set:
