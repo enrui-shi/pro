@@ -4,6 +4,7 @@ var router = express.Router();
 var jsonParser = bodyParser.json()
 
 router.get('/:username',jsonParser,function(req,res){
+    console.log("find a user")
     var username = req.params.username
     var db = req.app.locals.db
     db.collection('users').find({'username':username}).toArray(function(err,result){
@@ -23,16 +24,18 @@ router.get('/:username',jsonParser,function(req,res){
 });
 
 router.get('/:username/questions',jsonParser,function(req,res){
+    console.log("find question posed by user")
     var username = req.params.username
     var db = req.app.locals.db
     db.collection('questions').find({'user.username':username}).toArray(function(err,result){
         console.log(result.length)
+        console.log(result)
         if(result.length == 0){
             return res.json({'status':'OK', 'question_ids':[]})
         }else if(result.length > 0){
             var question_ids = []
             for(var i=0; i<result.length; i++){
-                question_ids.push(result.id)
+                question_ids.push(result[i].id)
             }
             return res.json({'status':'OK', 'question_ids': question_ids})
         }else{
@@ -44,14 +47,17 @@ router.get('/:username/questions',jsonParser,function(req,res){
 router.get('/:username/answers',jsonParser,function(req,res){
     var username = req.params.username
     var db = req.app.locals.db
-    db.collection('questions').find({'answer.user':username}).toArray(function(err,result){
+    db.collection('questions').find({'answers.user':username}).toArray(function(err,result){
         console.log(result.length)
         if(result.length == 0){
             return res.json({'status':'OK', 'answer_ids':[]})
         }else if(result.length > 0){
             var answer_ids = []
             for(var i=0; i<result.length; i++){
-                answer_ids.push(result.answer.id)
+                console.log(result[i])
+                for(var j=0;j<result[i].answers.length; j++){
+                    answer_ids.push(result[i].answers[j].id)
+                }
             }
             return res.json({'status':'OK', 'answer_ids': answer_ids})
         }else{
