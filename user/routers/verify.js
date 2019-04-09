@@ -5,7 +5,6 @@ var router = express.Router();
 const path = require('path');
 
 router.post('/',jsonParser,function(req,res){
-    json = {'status':'OK'};
     //console.log(data.email);
     //console.log(data['key']);
     var db = req.app.locals.db;

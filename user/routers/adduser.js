@@ -15,7 +15,7 @@ router.post('/',jsonParser,function(req,res){
     data = req.body;
     data['valide'] = "false";
     data['key'] = Math.floor((Math.random() * 8999) + 1000);
-    data['reputation']=0;
+    data['reputation']=1;
     console.log("data: ", data)
     var db = req.app.locals.db;
     //add user to database
