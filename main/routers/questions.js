@@ -97,7 +97,7 @@ router.get('/:id/answers',jsonParser,function(req,res){
 
 router.delete('/:id' ,jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
-    var forward_url = process.env.SERVER_QUESTION+'questions/'+req.params.id;
+    var forward_url = process.env.SERVER_QUESTION+'/questions/'+req.params.id;
     var options = {  
         url: forward_url,
         method: 'DELETE',
