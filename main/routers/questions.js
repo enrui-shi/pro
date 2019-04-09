@@ -10,6 +10,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/add',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
+    console.log("user:",req.session.current_user);
     console.log("data: ", req.body);
     var forward_url = process.env.SERVER_QUESTION+"/questions/add"
     console.log('request send to ',forward_url);

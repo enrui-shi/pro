@@ -10,14 +10,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
     var forward_url = process.env.SERVER_USER+"/login";
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    console.log("data: ", req.body)
     var options = {  
         url: forward_url,
         method: 'POST',
-        json: data
+        json: req.body
     };
     //send request to USER server
     request(options, function(err, response, body) {  
@@ -27,7 +26,7 @@ router.post('/',jsonParser,function(req,res){
         }
         console.log("req: ",body);
         if(body.status=='OK'){
-            req.session.current_user = data.username;
+            req.session.current_user = req.body.username;
             req.session.status = 'online';
         }
         res.json(body);
