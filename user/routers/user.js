@@ -29,13 +29,13 @@ router.get('/:username/questions',jsonParser,function(req,res){
         console.log(result.length)
         console.log(result)
         if(result.length == 0){
-            return res.json({'status':'OK', 'question_ids':[]})
+            return res.json({'status':'OK', 'questions':[]})
         }else if(result.length > 0){
             var question_ids = []
             for(var i=0; i<result.length; i++){
                 question_ids.push(result[i].id)
             }
-            return res.json({'status':'OK', 'question_ids': question_ids})
+            return res.json({'status':'OK', 'questions': question_ids})
         }else{
             return res.json({'status':'error','error':'wrong'})
         }
