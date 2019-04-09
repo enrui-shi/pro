@@ -6,11 +6,10 @@ const path = require('path');
 
 router.post('/',jsonParser,function(req,res){
     json = {'status':'OK'};
-    console.log(body);
     //console.log(data.email);
     //console.log(data['key']);
     var db = req.app.locals.db;
-    db.collection('users').find({ 'email': body['email'] 
+    db.collection('users').find({ 'email': req.body['email'] 
     }).toArray(function(err, result){
         if(err){
             res.json({'status':'error','error':err});
