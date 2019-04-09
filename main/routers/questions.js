@@ -110,7 +110,7 @@ router.delete('/:id' ,jsonParser,function(req,res){
             console.log(err);
         }
         console.log("received: ",body);
-        res.json(body);
+        res.sendStatus(body);
     });
 });
 
