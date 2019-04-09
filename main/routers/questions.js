@@ -9,15 +9,14 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/add',jsonParser,function(req,res){
-    data = req.body;
-    data.current_user = req.session.current_user;
-    console.log("data: ", data);
+    req.body.current_user = req.session.current_user;
+    console.log("data: ", req.body);
     var forward_url = process.env.SERVER_QUESTION+"/questions/add"
     console.log('request send to ',forward_url);
     var options = {  
         url: forward_url,
         method: 'POST',
-        json: data
+        json: req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -32,15 +31,14 @@ router.post('/add',jsonParser,function(req,res){
 
 
 router.post('/:id/answers/add',jsonParser,function(req,res){
-    data = req.body;
-    data.current_user = req.session.current_user;
-    console.log("data: ", data);
+    req.body.current_user = req.session.current_user;
+    console.log("data: ", req.body);
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers/add";
     console.log('request send to ',forward_url);
     var options = {  
         url: forward_url,
         method: 'POST',
-        json: data
+        json: req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -54,15 +52,14 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 });
 
 router.get('/:id',jsonParser,function(req,res){
-    data = req.body;
-    data.current_user = req.session.current_user;
-    console.log("data: ", data)
+    req.body.current_user = req.session.current_user;
+    console.log("data: ", req.body)
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id;
     console.log('request send to ',forward_url);
     var options = {  
         url: forward_url,
         method: 'GET',
-        json:data
+        json:req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -77,15 +74,14 @@ router.get('/:id',jsonParser,function(req,res){
 
 
 router.get('/:id/answers',jsonParser,function(req,res){
-    data = req.body;
-    data.current_user = req.session.current_user;
+    req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    console.log("data: ", req.body)
     var options = {  
         url: forward_url,
         method: 'GET',
-        json:data
+        json:req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -99,15 +95,14 @@ router.get('/:id/answers',jsonParser,function(req,res){
 });
 
 router.delete('/:id' ,jsonParser,function(req,res){
-    data = req.body;
-    data.current_user = req.session.current_user;
+    req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+'questions/'+req.params.id;
     var options = {  
         url: forward_url,
         method: 'DELETE',
-        json:data
+        json:req.body
     };
-    console.log("request send to ", )
+    console.log("request send to ", forward_url)
     request(options, function(err, response, body) {  
         if(err){
             console.log("ERROR")

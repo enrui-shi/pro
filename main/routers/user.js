@@ -9,14 +9,13 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get('/:user',jsonParser,function(req,res){
-    data = req.body;
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user;
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    console.log("data: ", req.body)
     var options = {  
         url: forward_url,
         method: 'GET',
-        json:data
+        json:req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -29,14 +28,13 @@ router.get('/:user',jsonParser,function(req,res){
     });
 });
 router.get('/:user/questions',jsonParser,function(req,res){
-    data = req.body;
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/questions";
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    console.log("data: ", req.body)
     var options = {  
         url: forward_url,
         method: 'GET',
-        json:data
+        json:req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
@@ -49,14 +47,13 @@ router.get('/:user/questions',jsonParser,function(req,res){
     });
 });
 router.get('/:user/answers',jsonParser,function(req,res){
-    data = req.body;
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/answers";
     console.log('request send to ',forward_url);
-    console.log("data: ", data)
+    console.log("data: ", req.body)
     var options = {  
         url: forward_url,
         method: 'GET',
-        json:data
+        json:req.body
     };
     //send request to Question server
     request(options, function(err, response, body) {  
