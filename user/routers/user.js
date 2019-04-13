@@ -44,7 +44,7 @@ router.get('/:username/questions',jsonParser,function(req,res){
 
 router.get('/:username/answers',jsonParser,function(req,res){
     var db = req.app.locals.db
-    db.collection('questions').find({'answers.user':req.params.username}).toArray(function(err,result){
+    db.collection('answers').find({'user':req.params.username}).toArray(function(err,result){
         console.log(result.length)
         if(result.length == 0){
             return res.json({'status':'OK', 'answers':[]})
