@@ -72,7 +72,26 @@ router.get('/:id',jsonParser,function(req,res){
         res.json(body);
     });
 });
-
+router.post('/:id/upvote',jsonParser,function(req,res){
+    req.body.current_user = req.session.current_user;
+    var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote";
+    console.log('request send to ',forward_url);
+    console.log("data: ", req.body)
+    var options = {  
+        url: forward_url,
+        method: 'POST',
+        json:req.body
+    };
+    //send request to Question server
+    request(options, function(err, response, body) {  
+        if(err){
+            console.log("ERROR")
+            console.log(err);
+        }
+        console.log("received: ",body);
+        res.json(body);
+    });
+});
 
 router.get('/:id/answers',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
