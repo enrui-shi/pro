@@ -16,6 +16,7 @@ router.post('/',jsonParser,function(req,res){
     data['valide'] = "false";
     data['key'] = Math.floor((Math.random() * 8999) + 1000);
     data['reputation']=1;
+    
     console.log("data: ", data)
     var db = req.app.locals.db;
     //add user to database
@@ -27,7 +28,7 @@ router.post('/',jsonParser,function(req,res){
             //console.log(data.username+" signed up");
             console.log(a.ops[0].username+" signed up");
             res.json({'status':"OK"});
-            sendMail(a.ops[0]);
+            //sendMail(a.ops[0]);
         }
         
       });

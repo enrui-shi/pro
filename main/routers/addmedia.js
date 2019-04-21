@@ -11,7 +11,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
-    var forward_url = process.env.SERVER_USER+"/addmeida";
+    var forward_url = process.env.SERVER_USER+"/addmedia";
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
         console.log("data: ", req.body)

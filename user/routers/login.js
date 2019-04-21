@@ -12,8 +12,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    json = {'status':"OK"};
-    // 
     db.collection('users').find({ 'username': req.body['username'] 
     }).toArray(function(err, result){
         if(result.length==1){
@@ -21,7 +19,7 @@ router.post('/',jsonParser,function(req,res){
             if(result.password == req.body.password && result.valide == 'true'){
                 //login
                 console.log(result.username+" logined");
-                res.json(json);
+                res.json({'status':"OK"});
             }else{
                 console.log(result.username+' false to login');
                 res.json({'status':"error","error":'wrong password or account not valide'})
