@@ -13,7 +13,7 @@ router.post('/',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_USER+"/addmedia";
     console.log('request send to ',forward_url);
-    if(process.env.DEBUG){
+    if(true){
         console.log("data: ", req.body)
     }
     var options = {  
