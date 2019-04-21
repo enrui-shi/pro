@@ -12,7 +12,9 @@ router.post('/:id/upvote',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/upvote";
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'POST',
@@ -32,7 +34,9 @@ router.post('/:id/accept',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/accept";
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'POST',

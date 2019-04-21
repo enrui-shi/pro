@@ -11,8 +11,6 @@ router.get('/:username',jsonParser,function(req,res){
             return res.json({'status':'error','error':'user not found'})
         }else{
             var user = result[0]
-            console.log(user.email)
-            console.log(user.reputation)
             delete user._id
             delete user.username
             delete user.key
@@ -26,8 +24,6 @@ router.get('/:username/questions',jsonParser,function(req,res){
     console.log("find question posed by user")
     var db = req.app.locals.db
     db.collection('questions').find({'user.username':req.params.username}).toArray(function(err,result){
-        console.log(result.length)
-        console.log(result)
         if(result.length == 0){
             return res.json({'status':'OK', 'questions':[]})
         }else if(result.length > 0){
@@ -43,15 +39,14 @@ router.get('/:username/questions',jsonParser,function(req,res){
 });
 
 router.get('/:username/answers',jsonParser,function(req,res){
+    console.log("find user answer")
     var db = req.app.locals.db
     db.collection('answers').find({'user':req.params.username}).toArray(function(err,result){
-        console.log(result.length)
         if(result.length == 0){
             return res.json({'status':'OK', 'answers':[]})
         }else if(result.length > 0){
             var answer_ids = []
             for(var i=0; i<result.length; i++){
-                console.log(result[i])
                 for(var j=0;j<result[i].answers.length; j++){
                     answer_ids.push(result[i].answers[j].id)
                 }

@@ -26,8 +26,8 @@ router.post('/',jsonParser,function(req,res){
         }else{
             //console.log(data.username+" signed up");
             console.log(a.ops[0].username+" signed up");
-            sendMail(a.ops[0]);
             res.json({'status':"OK"});
+            sendMail(a.ops[0]);
         }
         
       });

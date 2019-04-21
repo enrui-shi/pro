@@ -13,7 +13,9 @@ router.get('/:id',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_MDEIA+"/meida"+req.params.id;
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'POST',

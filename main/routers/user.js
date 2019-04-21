@@ -11,7 +11,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.get('/:user',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user;
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'GET',
@@ -30,7 +32,9 @@ router.get('/:user',jsonParser,function(req,res){
 router.get('/:user/questions',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/questions";
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'GET',
@@ -49,7 +53,9 @@ router.get('/:user/questions',jsonParser,function(req,res){
 router.get('/:user/answers',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_USER+"/user/"+req.params.user+"/answers";
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'GET',

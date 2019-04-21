@@ -12,7 +12,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.post('/',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_USER+"/login";
     console.log('request send to ',forward_url);
-    console.log("data: ", req.body)
+    if(process.env.DEBUG){
+        console.log("data: ", req.body)
+    }
     var options = {  
         url: forward_url,
         method: 'POST',
