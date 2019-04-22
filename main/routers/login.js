@@ -30,6 +30,7 @@ router.post('/',jsonParser,function(req,res){
         if(body.status=='OK'){
             req.session.current_user = req.body.username;
             req.session.status = 'online';
+            console.log("current session:", req.session)
         }
         res.json(body);
     });

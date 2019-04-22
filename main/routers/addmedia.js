@@ -7,29 +7,38 @@ var request = require('request');
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 
 
-router.post('/',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
-    var forward_url = process.env.SERVER_USER+"/addmedia";
-    console.log('request send to ',forward_url);
-    if(true){
-        console.log("data: ", req.body)
-    }
-    var options = {  
-        url: forward_url,
-        method: 'POST',
-        json: req.body
-    };
-    //send request to USER server
-    request(options, function(err, response, body) {  
-        if(err){
-            console.log("ERROR")
-            console.log(err);
+
+router.post('/',upload.single('contents'),function(req,res){
+    if(req.session.current_user){
+
+        var forward_url = process.env.SERVER_MEDIA+"/addmedia";
+        console.log('request send to ',forward_url);
+        if(true){
+            console.log("data: ", req.body)
         }
-        console.log("received: ",body);
-        res.json(body);
-    });
+        var options = {  
+            url: forward_url,
+            method: 'POST',
+            headers: {
+            "Content-Type": "multipart/form-data"
+            },
+            formData : {"contents":req.file}
+        };
+        request(options, function(err, response, body) {  
+            if(err){
+                console.log("ERROR")
+                console.log(err);
+            }
+            console.log("received: ",body);
+            res.json(body);
+        });
+    }else{
+        res.json({status: "error",error:"you need to login to add media"})
+    }
 });
 
 
