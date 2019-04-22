@@ -13,7 +13,7 @@ var upload = multer({ dest: 'uploads/' })
 
 
 
-router.post('/',upload.single('contents'),function(req,res){
+router.post('/',upload.single('content'),function(req,res){
     if(req.session.current_user){
         console.log(req.file)
         var forward_url = process.env.SERVER_MEDIA+"/addmedia";
@@ -27,7 +27,7 @@ router.post('/',upload.single('contents'),function(req,res){
             headers: {
                 "Content-Type": "multipart/form-data"
             },
-            formData : {"contents":fs.createReadStream(req.file.path)}
+            formData : {"content":fs.createReadStream(req.file.path)}
         };
         request(options, function(err, response, body) {  
             if(err){
