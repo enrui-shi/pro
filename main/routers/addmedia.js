@@ -15,7 +15,7 @@ var upload = multer({ dest: 'uploads/' })
 
 router.post('/',upload.single('contents'),function(req,res){
     if(req.session.current_user){
-
+        console,length(req.session)
         var forward_url = process.env.SERVER_MEDIA+"/addmedia";
         console.log('request send to ',forward_url);
         if(true){
