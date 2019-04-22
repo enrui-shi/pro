@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var path = require('path');
 var request = require('request');
+var fs      = require('fs');
 // create application/json parser
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
@@ -24,9 +25,9 @@ router.post('/',upload.single('contents'),function(req,res){
             url: forward_url,
             method: 'POST',
             headers: {
-            "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             },
-            formData : {"contents":req.file}
+            formData : {"contents":fs.createReadStream(req.file)}
         };
         request(options, function(err, response, body) {  
             if(err){
