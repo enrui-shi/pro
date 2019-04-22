@@ -26,7 +26,7 @@ router.post('/',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("receive: ",body);
+        console.log("receive from login server: ",body);
         if(body.status=='OK'){
             req.session.current_user = req.body.username;
             req.session.status = 'online';

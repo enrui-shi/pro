@@ -12,6 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
+    console.log(req.body.username+" try to loging: ")
     db.collection('users').find({ 'username': req.body['username'] 
     }).toArray(function(err, result){
         if(result.length==1){
