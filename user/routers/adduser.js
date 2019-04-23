@@ -28,7 +28,7 @@ router.post('/',jsonParser,function(req,res){
             //console.log(data.username+" signed up");
             console.log(a.ops[0].username+" signed up");
             res.json({'status':"OK"});
-            //sendMail(a.ops[0]);
+            sendMail(a.ops[0]);
         }
         
       });
@@ -38,32 +38,27 @@ router.post('/',jsonParser,function(req,res){
 
 module.exports = router;
 
-
 function sendMail(data){
-    //console.log("data:" ,data);
+    console.log("data:" ,data);
     var transporter = nodemailer.createTransport({
-        //host: 'email.cloud.compas.cs.stonybrook.edu',
-        host:'smtp.gmail.com',
-        port:465,
-        secure:true,
-        auth: {
-            user: 'cse356test@gmail.com',
-            pass: 'Cse356lalala'
-        }
+        service:'Sendgrid',
+        //host:"130.245.171.107",
+        //host:"localhost",
+        auth: { user: 'cse356', pass: 'lalala123!' }
     });
     var mailOpton = {
-        //from:'cse356@email.cloud.compas.cs.stonybrook.edu',
-        from: 'cse356test@gmail.com',
+        from:'cse356@mail.cloud.compas.cs.stonybrook.edu',
         to: data.email,
         subject: "verify code",
-        text: "validation key: <"+data.key+">"
+        text: "key"+data.key
     };
-
+    
     transporter.sendMail(mailOpton, function(error, info){
+        console.log("1")
         if (error) {
           console.log("error is:");
           console.log(error);
         } 
-          else{console.log('Email sent to :',data.email)}
-        });
+        else{console.log('Email sent: ')+info}
+    });
 }
