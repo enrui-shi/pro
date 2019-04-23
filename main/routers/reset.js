@@ -9,7 +9,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-router.GET('/',jsonParser,function(req,res){
+router.get('/',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_QUESTION+"/reset";
     var options = {  
         url: forward_url,
