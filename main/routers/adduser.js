@@ -16,7 +16,7 @@ router.post('/',jsonParser,function(req,res){
     if(process.env.DEBUG){
         console.log("data: ", data)
     }
-    
+    req.session.status = 'offline';
     var options = {  
         url: forward_url,
         method: 'POST',
