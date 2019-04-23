@@ -22,6 +22,7 @@ var search = require('./routers/search.js')
 var answers = require('./routers/answers.js')
 var media = require('./routers/media.js');
 var addmedia = require('./routers/addmedia.js');
+var reset = require('./routers/reset.js');
 
 //api endpoint
 app.use('/login', login);
@@ -34,6 +35,7 @@ app.use('/search',search);
 app.use('/user',user);
 app.use('/addmedia',addmedia);
 app.use('/media',media);
+app.use('/reset',reset)
 
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/html/login.html'));
