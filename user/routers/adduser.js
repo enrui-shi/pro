@@ -41,13 +41,11 @@ module.exports = router;
 function sendMail(data){
     console.log("data:" ,data);
     var transporter = nodemailer.createTransport({
-        service:'Sendgrid',
-        //host:"130.245.171.107",
-        //host:"localhost",
-        auth: { user: 'cse356', pass: 'lalala123!' }
+        host:"user.cloud.compas.cs.stonybrook.edu",
+       //auth: { user: 'cse356', pass: 'lalala123!' }
     });
     var mailOpton = {
-        from:'cse356@mail.cloud.compas.cs.stonybrook.edu',
+        from:'cse356@user.cloud.compas.cs.stonybrook.edu',
         to: data.email,
         subject: "verify code",
         text: "validation key: <" +data.key+">"
