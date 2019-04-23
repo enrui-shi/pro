@@ -46,7 +46,7 @@ function sendMail(data){
        host:'localhost',
        port: 25,
        tls:{
-           rejectUnathrized: false
+        rejectUnauthorized: false,
        },
     });
     var mailOpton = {
