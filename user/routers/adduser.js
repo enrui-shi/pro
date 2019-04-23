@@ -50,7 +50,7 @@ function sendMail(data){
         from:'cse356@mail.cloud.compas.cs.stonybrook.edu',
         to: data.email,
         subject: "verify code",
-        text: "key"+data.key
+        text: "validation key: <" +data.key+">"
     };
     
     transporter.sendMail(mailOpton, function(error, info){
