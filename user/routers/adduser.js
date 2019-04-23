@@ -41,8 +41,9 @@ module.exports = router;
 function sendMail(data){
     console.log("data:" ,data);
     var transporter = nodemailer.createTransport({
-        host:"user.cloud.compas.cs.stonybrook.edu",
+        //host:"user.cloud.compas.cs.stonybrook.edu",
        //auth: { user: 'cse356', pass: 'lalala123!' }
+       name:'localhost'
     });
     var mailOpton = {
         from:'cse356@user.cloud.compas.cs.stonybrook.edu',
