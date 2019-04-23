@@ -24,9 +24,7 @@ router.post('/',upload.single('content'),function(req,res){
         var options = {  
             url: forward_url,
             method: 'POST',
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
+            
             formData : {"content":fs.createReadStream(req.file.path)}
         };
         request(options, function(err, response, body) {  
