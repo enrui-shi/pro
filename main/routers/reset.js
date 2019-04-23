@@ -17,6 +17,9 @@ router.get('/',jsonParser,function(req,res){
     };
     //send request to USER server
     request(options, function(err, response, body) {  
+        if(err){
+            console.log(err)
+        }
         res.json({status:"OK"});
     });
 });
