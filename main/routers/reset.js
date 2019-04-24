@@ -12,11 +12,15 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.get('/',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_QUESTION+"/reset";
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/reset",
         method: 'GET',
     };
     //send request to USER server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/reset",
+        method: 'GET',
+    },
+     function(err, response, body) {  
         if(err){
             console.log(err)
         }

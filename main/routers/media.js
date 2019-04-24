@@ -17,12 +17,17 @@ router.get('/:id',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_MDEIA+"/meida"+req.params.id,
         method: 'POST',
         json: req.body
     };
     //send request to USER server
-    request(options, function(err, response, body) {  
+    request( {  
+        url: process.env.SERVER_MDEIA+"/meida"+req.params.id,
+        method: 'POST',
+        json: req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

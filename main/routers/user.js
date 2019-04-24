@@ -15,12 +15,17 @@ router.get('/:user',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_USER+"/user/"+req.params.user,
         method: 'GET',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_USER+"/user/"+req.params.user,
+        method: 'GET',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -36,12 +41,17 @@ router.get('/:user/questions',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_USER+"/user/"+req.params.user+"/questions",
         method: 'GET',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_USER+"/user/"+req.params.user+"/questions",
+        method: 'GET',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -57,12 +67,17 @@ router.get('/:user/answers',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_USER+"/user/"+req.params.user+"/answers",
         method: 'GET',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_USER+"/user/"+req.params.user+"/answers",
+        method: 'GET',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

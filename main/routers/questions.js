@@ -17,12 +17,17 @@ router.post('/add',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/questions/add",
         method: 'POST',
         json: req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/questions/add",
+        method: 'POST',
+        json: req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -41,12 +46,17 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers/add",
         method: 'POST',
         json: req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers/add",
+        method: 'POST',
+        json: req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -64,12 +74,17 @@ router.get('/:id',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id,
         method: 'GET',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id,
+        method: 'GET',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -81,17 +96,22 @@ router.get('/:id',jsonParser,function(req,res){
 router.post('/:id/upvote',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote";
-    console.log('request send to ',forward_url);
+    console.log('request send to ',process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote");
     if(process.env.DEBUG){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote",
         method: 'POST',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote",
+        method: 'POST',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -104,17 +124,22 @@ router.post('/:id/upvote',jsonParser,function(req,res){
 router.get('/:id/answers',jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";
-    console.log('request send to ',forward_url);
+    console.log('request send to ',process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers");
     if(process.env.DEBUG){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers",
         method: 'GET',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers",
+        method: 'GET',
+        json:req.body
+    },
+     function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -128,7 +153,7 @@ router.delete('/:id' ,jsonParser,function(req,res){
     req.body.current_user = req.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+'/questions/'+req.params.id;
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+'/questions/'+req.params.id,
         method: 'DELETE',
         json:req.body
     };
@@ -136,7 +161,12 @@ router.delete('/:id' ,jsonParser,function(req,res){
     if(process.env.DEBUG){
         console.log("data: ", req.body)
     }
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+'/questions/'+req.params.id,
+        method: 'DELETE',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

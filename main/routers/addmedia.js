@@ -16,18 +16,22 @@ var upload = multer({ dest: 'uploads/' })
 router.post('/',upload.single('content'),function(req,res){
     if(req.session.current_user){
         console.log(req.file)
-        var forward_url = process.env.SERVER_MEDIA+"/addmedia";
-        console.log('request send to ',forward_url);
+        console.log('request send to ',process.env.SERVER_MEDIA+"/addmedia");
         if(true){
             console.log("data: ", req.body)
         }
         var options = {  
-            url: forward_url,
+            url: process.env.SERVER_MEDIA+"/addmedia",
             method: 'POST',
             
             formData : {"content":fs.createReadStream(req.file.path)}
         };
-        request(options, function(err, response, body) {  
+        request({  
+            url: process.env.SERVER_MEDIA+"/addmedia",
+            method: 'POST',
+            formData : {"content":fs.createReadStream(req.file.path)}
+            }, 
+        function(err, response, body) {  
             if(err){
                 console.log("ERROR")
                 console.log(err);

@@ -16,12 +16,17 @@ router.post('/:id/upvote',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/upvote",
         method: 'POST',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/upvote",
+        method: 'POST',
+        json:req.body
+        },
+     function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
@@ -38,12 +43,17 @@ router.post('/:id/accept',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/accept",
         method: 'POST',
         json:req.body
     };
     //send request to Question server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/accept",
+        method: 'POST',
+        json:req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

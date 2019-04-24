@@ -17,12 +17,17 @@ router.post('/',jsonParser,function(req,res){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_SEARCH+"/search",
         method: 'POST',
         json: data
     };
     //send request to USER server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_SEARCH+"/search",
+        method: 'POST',
+        json: data
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

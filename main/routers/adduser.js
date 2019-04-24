@@ -18,12 +18,17 @@ router.post('/',jsonParser,function(req,res){
     }
     req.session.status = 'offline';
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_USER+"/adduser",
         method: 'POST',
         json: data
     };
     //send request to USER server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_USER+"/adduser",
+        method: 'POST',
+        json: data
+        }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);

@@ -10,19 +10,24 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
+    //data = req.body;
     var forward_url = process.env.SERVER_USER+"/verify";
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: forward_url,
+        url: process.env.SERVER_USER+"/verify",
         method: 'POST',
-        json: data
+        json: req.body
     };
     //send request to USER server
-    request(options, function(err, response, body) {  
+    request({  
+        url: process.env.SERVER_USER+"/verify",
+        method: 'POST',
+        json: req.body
+    }, 
+    function(err, response, body) {  
         if(err){
             console.log("ERROR")
             console.log(err);
