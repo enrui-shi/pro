@@ -6,11 +6,15 @@ const port = 3000;
 //get env
 require('dotenv').config()
 //file dependecy
-var cookieSession = require('cookie-session');
-app.use(cookieSession({
-    name: 'session',
-    keys: ['lalala'],
-  }))
+//var cookieSession = require('cookie-session');
+var cookieParser = require('cookie-parser');
+var session = require('express-session')
+app.use(cookieParser());
+app.use(session({secret: "lalala"}));
+// app.use(cookieSession({
+//     name: 'session',
+//     keys: ['lalala'],
+//   }))
 //routers
 var user = require('./routers/user.js');
 var login = require('./routers/login.js');
