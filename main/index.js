@@ -20,6 +20,8 @@ app.use(session({
     store: new MongoStore({  
         url: process.env.MONGO_ADDRESS+'/mysession'
     }),  
+    resave: false,   
+    saveUninitialized: true,
     cookie: {  
         maxAge: 1000*30*60  
     },  
