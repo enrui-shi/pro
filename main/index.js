@@ -23,6 +23,7 @@ app.use(session({
     resave: false,   
     saveUninitialized: true,
     cookie: {  
+        domain:"130.245.171.196",
         maxAge: 1000*30*60  
     },  
     secret: "lalala"}));
