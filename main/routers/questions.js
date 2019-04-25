@@ -9,7 +9,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/add',jsonParser,function(req,res){
-    req.body.current_user = req.cookies.current_user.current_user;
+    req.body.current_user = req.cookies;
     console.log("current session:", req.cookies)
     var forward_url = process.env.SERVER_QUESTION+"/questions/add"
     console.log('request send to ',forward_url);
