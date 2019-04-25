@@ -12,15 +12,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    data = req.body;
-    data['valide'] = "false";
-    data['key'] = Math.floor((Math.random() * 8999) + 1000);
-    data['reputation']=1;
-    
-    console.log("data: ", data)
+    console.log("adduser ",req.body.username)
+    req.body['valide'] = "false";
+    req.body['key'] = Math.floor((Math.random() * 8999) + 1000);
+    req.body['reputation']=1;
+    //console.log("data: ", data)
     var db = req.app.locals.db;
     //add user to database
-    db.collection("users").insertOne(data, function(err, a) {
+    db.collection("users").insertOne(req.body, function(err, a) {
         if (err) {
             console.log(err);
             res.json({'status':"error","error":err})
@@ -39,7 +38,7 @@ router.post('/',jsonParser,function(req,res){
 module.exports = router;
 
 function sendMail(data){
-    console.log("data:" ,data);
+    //console.log("data:" ,data);
     var transporter = nodemailer.createTransport({
         //host:"user.cloud.compas.cs.stonybrook.edu",
        //auth: { user: 'cse356', pass: 'lalala123!' }
