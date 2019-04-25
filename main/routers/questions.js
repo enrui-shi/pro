@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var path = require('path');
 // create application/json parser
+var request = require('request');
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
