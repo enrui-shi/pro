@@ -82,7 +82,7 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 
 router.get('/:id',jsonParser,function(req,res){
     if(req.cookies.session){
-        if(req.cookies.session.current_user){
+        if(req.cookies.session.current_user!=null){
             req.body.current_user = req.cookies.session.current_user
         }else{
             req.body.current_user = req.headers['x-forwarded-for']
