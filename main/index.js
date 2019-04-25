@@ -23,7 +23,6 @@ app.use(session({
     resave: false,   
     saveUninitialized: true,
     cookie: {  
-        domain: "356.stone",  
         maxAge: 1000*30*60  
     },  
     secret: "lalala"}));
