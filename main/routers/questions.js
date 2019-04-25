@@ -83,6 +83,7 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 router.get('/:id',jsonParser,function(req,res){
     console.log("get question:")
     console.log(req.cookies.session)
+    console.log("head",req.headers)
     if(req.cookies.session){
         if(req.cookies.session.current_user!=null){
             req.body.current_user = req.cookies.session.current_user
