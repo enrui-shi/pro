@@ -207,7 +207,13 @@ router.delete('/:id' ,jsonParser,function(req,res){
         }
         console.log("received: ",body);
         if(body.status =='OK'){
-            res.sendStatus(200);
+            request({  
+                url: process.env.SERVER_MEDIA+'/deletemedia',
+                method: 'POST',
+                json:req.body
+            }, function(err,resp,body){
+                res.sendStatus(200);
+            });
         }else{
             res.sendStatus(400);
         }
