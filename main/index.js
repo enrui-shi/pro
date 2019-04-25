@@ -1,4 +1,5 @@
 const express = require('express');
+var proxy = require('http-proxy-middleware');
 const app = express();
 const path = require('path');
 const port = 3000;
@@ -7,6 +8,11 @@ const port = 3000;
 require('dotenv').config()
 //file dependecy
 //var cookieSession = require('cookie-session');
+
+
+//proxy
+app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
+
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
 app.use(cookieParser());
@@ -25,7 +31,7 @@ var questions = require('./routers/questions.js');
 var search = require('./routers/search.js')
 var answers = require('./routers/answers.js')
 var media = require('./routers/media.js');
-var addmedia = require('./routers/addmedia.js');
+//var addmedia = require('./routers/addmedia.js');
 var reset = require('./routers/reset.js');
 
 //api endpoint
@@ -37,7 +43,7 @@ app.use('/logout', logout);
 app.use('/questions',questions);
 app.use('/search',search);
 app.use('/user',user);
-app.use('/addmedia',addmedia);
+//app.use('/addmedia',addmedia);
 app.use('/media',media);
 app.use('/reset',reset)
 
