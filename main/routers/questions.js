@@ -83,7 +83,10 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 router.get('/:id',jsonParser,function(req,res){
     if(req.cookies.session){
         req.body.current_user = req.cookies.session.current_user;
+    }else{
+        req.body.current_user = req.remoteAddress
     }
+
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id;
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){

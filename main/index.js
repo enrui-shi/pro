@@ -14,6 +14,7 @@ require('dotenv').config()
 //proxy
 app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
 app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
+//app.use('/question/:id', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: true }));
 //cookie
 app.use(cookieParser())
 //var cookieParser = require('cookie-parser');
