@@ -18,13 +18,13 @@ router.get('/:id',jsonParser,function(req,res){
     }
     var options = {  
         url: process.env.SERVER_MDEIA+"/meida/"+req.params.id,
-        method: 'POST',
+        method: 'GET',
         json: req.body
     };
     //send request to USER server
     request( {  
         url: process.env.SERVER_MEDIA+"/meida/"+req.params.id,
-        method: 'POST',
+        method: 'GET',
         json: req.body
     }, 
     function(err, response, body) {  
