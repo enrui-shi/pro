@@ -43,7 +43,7 @@ router.post('/add',jsonParser,function(req,res){
 
 
 router.post('/:id/answers/add',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    req.body.current_user = req.cookies.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers/add";
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
@@ -71,7 +71,7 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 });
 
 router.get('/:id',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    req.body.current_user = req.cookies.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id;
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
@@ -98,7 +98,7 @@ router.get('/:id',jsonParser,function(req,res){
     });
 });
 router.post('/:id/upvote',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    req.body.current_user = req.cookies.ession.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote";
     console.log('request send to ',process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/upvote");
     if(process.env.DEBUG){
@@ -126,7 +126,7 @@ router.post('/:id/upvote',jsonParser,function(req,res){
 });
 
 router.get('/:id/answers',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    req.body.current_user = req.cookies.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers";
     console.log('request send to ',process.env.SERVER_QUESTION+"/questions/"+req.params.id+"/answers");
     if(process.env.DEBUG){
@@ -154,7 +154,7 @@ router.get('/:id/answers',jsonParser,function(req,res){
 });
 
 router.delete('/:id' ,jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    req.body.current_user = req.cookies.session.current_user;
     var forward_url = process.env.SERVER_QUESTION+'/questions/'+req.params.id;
     var options = {  
         url: process.env.SERVER_QUESTION+'/questions/'+req.params.id,

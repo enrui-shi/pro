@@ -9,7 +9,9 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/:id/upvote',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    if(req.cookies.session){
+        req.body.current_user = req.cookies.session.current_user;
+    }
     var forward_url = process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/upvote";
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
@@ -36,7 +38,9 @@ router.post('/:id/upvote',jsonParser,function(req,res){
     });
 });
 router.post('/:id/accept',jsonParser,function(req,res){
-    req.body.current_user = req.session.current_user;
+    if(req.cookies.session){
+        req.body.current_user = req.cookies.session.current_user;
+    }
     var forward_url = process.env.SERVER_QUESTION+"/answers/"+req.params.id+"/accept";
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
