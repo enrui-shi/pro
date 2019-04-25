@@ -15,6 +15,9 @@ router.get('/:username',jsonParser,function(req,res){
             delete user.username
             delete user.key
             delete user.valide
+            if(user.reputation<=0){
+                user.reputation=1;
+            }
             res.json({'status':'OK','user':user})
         }
     });
