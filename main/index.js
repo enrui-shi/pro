@@ -16,19 +16,24 @@ app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: tru
 //cookie
 app.use(cookieParser())
 //var cookieParser = require('cookie-parser');
-var session = require('express-session')
-var MongoStore  = require("connect-mongo")(session);
-app.use(session({
-    store: new MongoStore({  
-        url: process.env.MONGO_ADDRESS+'/mysession'
-    }),  
-    resave: false,   
-    saveUninitialized: true,
-    cookie: {  
-        domain:"130.245.171.196",
-        maxAge: 1000*30*60  
-    },  
-    secret: "lalala"}));
+
+
+// var session = require('express-session')
+// var MongoStore  = require("connect-mongo")(session);
+// app.use(session({
+//     store: new MongoStore({  
+//         url: process.env.MONGO_ADDRESS+'/mysession'
+//     }),  
+//     resave: false,   
+//     saveUninitialized: true,
+//     cookie: {  
+//         domain:"130.245.171.196",
+//         maxAge: 1000*30*60  
+//     },  
+//     secret: "lalala"}));
+
+
+    
 // app.use(cookieSession({
 //     name: 'session',
 //     keys: ['lalala'],

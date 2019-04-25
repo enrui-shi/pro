@@ -35,10 +35,10 @@ router.post('/',jsonParser,function(req,res){
         }
         console.log("receive from login server: ",body);
         if(body.status=='OK'){
-            req.session.current_user = req.body.username;
-            req.session.status = 'online';
+            //req.session.current_user = req.body.username;
+            //req.session.status = 'online';
             res.cookie('session', { current_user: req.body.username });
-            console.log("current session:", req.session)
+            console.log("current session:", req.cookies)
         }
         res.json(body);
     });
