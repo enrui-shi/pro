@@ -14,7 +14,7 @@ var upload = multer({ dest: 'uploads/' })
 
 
 router.post('/',upload.single('content'),function(req,res){
-    console.log("current session: ",req.session)
+    console.log("current session: ",req.cookies.session)
     if(req.cookies.current_user){
         console.log(req.file)
         console.log('request send to ',process.env.SERVER_MEDIA+"/addmedia");
@@ -32,7 +32,12 @@ router.post('/',upload.single('content'),function(req,res){
                 console.log(err);
             }
             console.log("received from add media: ",body);
-            res.json(body);
+            if(body.status==error){
+                res.status(404).json(body);
+            }else{
+                res.json(body);
+            }
+            
         });
     }else{
         res.json({status: "error",error:"you need to login to add media"})
