@@ -4,7 +4,8 @@ const app = express();
 var cookieParser = require('cookie-parser')
 const path = require('path');
 const port = 3000;
-
+var request = require('request');
+app.use(expressip().getIpInfoMiddleware)
 //get env
 require('dotenv').config()
 //file dependecy

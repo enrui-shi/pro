@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var path = require('path');
-var request = require('request');
+var expressip = require('express-ip');
 // create application/json parser
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
@@ -83,16 +83,15 @@ router.post('/:id/answers/add',jsonParser,function(req,res){
 router.get('/:id',jsonParser,function(req,res){
     console.log("get question:")
     console.log(req.cookies.session)
-    console.log("head",req.headers)
     if(req.cookies.session){
         if(req.cookies.session.current_user!=null){
             req.body.current_user = req.cookies.session.current_user
         }else{
-            req.body.current_user = req.headers['x-forwarded-for']
+            req.body.current_user = req.ipInfo
         }
     }else{
-        console.log(req.headers['x-forwarded-for'])
-        req.body.current_user = req.headers['x-forwarded-for']
+        console.log(req.ipInfo)
+        req.body.current_user = req.ipInfo
     }
 
     var forward_url = process.env.SERVER_QUESTION+"/questions/"+req.params.id;
