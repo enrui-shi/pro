@@ -3,6 +3,7 @@ var proxy = require('http-proxy-middleware');
 const app = express();
 const path = require('path');
 const port = 3000;
+app.use(cookieParser());
 
 //get env
 require('dotenv').config()
@@ -15,8 +16,15 @@ app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: tru
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
-app.use(cookieParser());
-app.use(session({secret: "lalala"}));
+var MongoStore  = require("connect-mongo")(session);
+app.use(session({
+    store: new MongoStore({  
+        url: process.env.MONGO_ADDRESS+'/mysession'
+    }),  
+    cookie: {  
+        maxAge: 1000*30*60  
+    },  
+    secret: "lalala"}));
 // app.use(cookieSession({
 //     name: 'session',
 //     keys: ['lalala'],
