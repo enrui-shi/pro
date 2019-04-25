@@ -26,7 +26,7 @@ router.post('/',jsonParser,function(req,res){
     request({  
         url: process.env.SERVER_USER+"/adduser",
         method: 'POST',
-        json: data
+        json: req.body
         }, 
     function(err, response, body) {  
         if(err){
