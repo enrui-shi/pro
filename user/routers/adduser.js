@@ -22,7 +22,7 @@ router.post('/',jsonParser,function(req,res){
     db.collection("users").insertOne(req.body, function(err, a) {
         if (err) {
             console.log(err);
-            res.json({'status':"error","error":err})
+            res.status(404).json({'status':"error","error":err})
         }else{
             //console.log(data.username+" signed up");
             console.log(a.ops[0].username+" signed up");
