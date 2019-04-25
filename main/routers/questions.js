@@ -34,8 +34,12 @@ router.post('/add',jsonParser,function(req,res){
                 console.log(err);
             }
             console.log("received from add question: ",body);
-            if(body.status=='error'){
-                res.status(404).json(body);
+            if(body.status){
+                if(body.status=='error'){
+                    res.status(404).json(body);
+                }else{
+                    res.json(body);
+                }
             }else{
                 res.json(body);
             }
