@@ -9,32 +9,36 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/add',jsonParser,function(req,res){
-    req.body.current_user = req.cookies.session.current_user;
-    console.log("current session:", req.cookies.session)
-    var forward_url = process.env.SERVER_QUESTION+"/questions/add"
-    console.log('request send to ',forward_url);
-    if(process.env.DEBUG&&false){
-        console.log("data: ", req.body)
-    }
-    var options = {  
-        url: process.env.SERVER_QUESTION+"/questions/add",
-        method: 'POST',
-        json: req.body
-    };
-    //send request to Question server
-    request({  
-        url: process.env.SERVER_QUESTION+"/questions/add",
-        method: 'POST',
-        json: req.body
-    }, 
-    function(err, response, body) {  
-        if(err){
-            console.log("ERROR")
-            console.log(err);
+    if(req.cookies.session.current_user){
+        req.body.current_user = req.cookies.session.current_user;
+        console.log("current session:", req.cookies.session)
+        var forward_url = process.env.SERVER_QUESTION+"/questions/add"
+        console.log('request send to ',forward_url);
+        if(process.env.DEBUG&&false){
+            console.log("data: ", req.body)
         }
-        console.log("received from add question: ",body);
-        res.json(body);
-    });
+        var options = {  
+            url: process.env.SERVER_QUESTION+"/questions/add",
+            method: 'POST',
+            json: req.body
+        };
+        //send request to Question server
+        request({  
+            url: process.env.SERVER_QUESTION+"/questions/add",
+            method: 'POST',
+            json: req.body
+        }, 
+        function(err, response, body) {  
+            if(err){
+                console.log("ERROR")
+                console.log(err);
+            }
+            console.log("received from add question: ",body);
+            res.json(body);
+        });
+    }else{
+        res.json({status: "error",error:"you need to login"})
+    }
 });
 
 
