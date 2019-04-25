@@ -14,6 +14,7 @@ var upload = multer({ dest: 'uploads/' })
 
 
 router.post('/',upload.single('content'),function(req,res){
+    console.log("current session: ",req.session)
     if(req.session.current_user){
         console.log(req.file)
         console.log('request send to ',process.env.SERVER_MEDIA+"/addmedia");
