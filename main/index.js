@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser')
 const path = require('path');
 const port = 3000;
 var request = require('request');
+var expressip = require('express-ip');
 app.use(expressip().getIpInfoMiddleware)
 //get env
 require('dotenv').config()
