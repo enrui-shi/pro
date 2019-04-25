@@ -13,6 +13,7 @@ require('dotenv').config()
 
 //proxy
 app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
+app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
 //cookie
 app.use(cookieParser())
 //var cookieParser = require('cookie-parser');
@@ -47,7 +48,7 @@ var verify = require('./routers/verify.js');
 var questions = require('./routers/questions.js');
 var search = require('./routers/search.js')
 var answers = require('./routers/answers.js')
-var media = require('./routers/media.js');
+//var media = require('./routers/media.js');
 //var addmedia = require('./routers/addmedia.js');
 var reset = require('./routers/reset.js');
 
@@ -61,7 +62,7 @@ app.use('/questions',questions);
 app.use('/search',search);
 app.use('/user',user);
 //app.use('/addmedia',addmedia);
-app.use('/media',media);
+//app.use('/media',media);
 app.use('/reset',reset)
 
 app.get('/',function(req,res){
