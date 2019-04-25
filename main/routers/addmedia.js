@@ -20,12 +20,6 @@ router.post('/',upload.single('content'),function(req,res){
         if(true){
             console.log("data: ", req.body)
         }
-        var options = {  
-            url: process.env.SERVER_MEDIA+"/addmedia",
-            method: 'POST',
-            
-            formData : {"content":fs.createReadStream(req.file.path)}
-        };
         request({  
             url: process.env.SERVER_MEDIA+"/addmedia",
             method: 'POST',
@@ -36,7 +30,7 @@ router.post('/',upload.single('content'),function(req,res){
                 console.log("ERROR")
                 console.log(err);
             }
-            console.log("received: ",body);
+            console.log("received from add media: ",body);
             res.json(body);
         });
     }else{

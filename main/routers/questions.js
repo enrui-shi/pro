@@ -32,7 +32,7 @@ router.post('/add',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("received: ",body);
+        console.log("received from add question: ",body);
         res.json(body);
     });
 });

@@ -33,7 +33,7 @@ router.post('/',jsonParser,function(req,res){
             console.log("ERROR")
             console.log(err);
         }
-        console.log("req: ",body);
+        console.log("req from adduser: ",body);
         res.json(body);
     });
 });
