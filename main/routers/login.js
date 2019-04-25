@@ -11,7 +11,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/',jsonParser,function(req,res){
     var forward_url = process.env.SERVER_USER+"/login";
-    req.session.current_user = req.body.username;
+    //req.session.current_user = req.body.username;
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
         console.log("data: ", req.body)
