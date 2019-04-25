@@ -11,19 +11,19 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get('/:id',jsonParser,function(req,res){
     //req.body.current_user = req.current_user;
-    var forward_url = process.env.SERVER_MEDIA+"/meida/"+req.params.id;
+    var forward_url = process.env.SERVER_MEDIA+"/media/"+req.params.id;
     console.log('request send to ',forward_url);
     if(process.env.DEBUG){
         console.log("data: ", req.body)
     }
     var options = {  
-        url: process.env.SERVER_MDEIA+"/meida/"+req.params.id,
+        url: process.env.SERVER_MDEIA+"/media/"+req.params.id,
         method: 'GET',
         json: req.body
     };
     //send request to USER server
     request( {  
-        url: process.env.SERVER_MEDIA+"/meida/"+req.params.id,
+        url: process.env.SERVER_MEDIA+"/media/"+req.params.id,
         method: 'GET',
         json: req.body
     }, 
