@@ -90,6 +90,7 @@ router.get('/:id',jsonParser,function(req,res){
             req.body.current_user = req.headers['x-forwarded-for']
         }
     }else{
+        console.log(req.headers['x-forwarded-for'])
         req.body.current_user = req.headers['x-forwarded-for']
     }
 
