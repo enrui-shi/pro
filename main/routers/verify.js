@@ -33,7 +33,11 @@ router.post('/',jsonParser,function(req,res){
             console.log(err);
         }
         console.log("req: ",body);
-        res.json(body);
+        if(body.status=='error'){
+            res.status(404).json(body);
+        }else{
+            res.json(body);
+        }
     });
 });
 

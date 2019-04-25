@@ -40,7 +40,11 @@ router.post('/',jsonParser,function(req,res){
             res.cookie('session', { current_user: req.body.username });
             console.log("current session:", req.cookies)
         }
-        res.json(body);
+        if(body.status=='error'){
+            res.status(404).json(body);
+        }else{
+            res.json(body);
+        }
     });
 });
 

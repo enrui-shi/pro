@@ -34,7 +34,11 @@ router.post('/:id/upvote',jsonParser,function(req,res){
             console.log(err);
         }
         console.log("received: ",body);
-        res.json(body);
+        if(body.status=='error'){
+            res.status(404).json(body);
+        }else{
+            res.json(body);
+        }
     });
 });
 router.post('/:id/accept',jsonParser,function(req,res){
@@ -63,7 +67,11 @@ router.post('/:id/accept',jsonParser,function(req,res){
             console.log(err);
         }
         console.log("received: ",body);
-        res.json(body);
+        if(body.status=='error'){
+            res.status(404).json(body);
+        }else{
+            res.json(body);
+        }
     });
 });
 

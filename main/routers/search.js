@@ -35,7 +35,11 @@ router.post('/',jsonParser,function(req,res){
         console.log("req: ",body);
         //console.log("new req:ß");
         //console.log(JSON.stringify(body))
-        res.json(body);
+        if(body.status=='error'){
+            res.status(404).json(body);
+        }else{
+            res.json(body);
+        }
     });
 });
 

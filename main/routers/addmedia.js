@@ -32,7 +32,7 @@ router.post('/',upload.single('content'),function(req,res){
                 console.log(err);
             }
             console.log("received from add media: ",body);
-            if(body.status==error){
+            if(body.status=='error'){
                 res.status(404).json(body);
             }else{
                 res.json(body);
@@ -40,7 +40,7 @@ router.post('/',upload.single('content'),function(req,res){
             
         });
     }else{
-        res.json({status: "error",error:"you need to login to add media"})
+        res.status(404).json({status: "error",error:"you need to login to add media"})
     }
 });
 

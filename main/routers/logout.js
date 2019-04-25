@@ -15,7 +15,7 @@ router.post('/',jsonParser,function(req,res){
         req.session = null;
         res.json({'status':'OK'});
     }else{
-        res.json({'status':'error','error':'no one is login'});
+        res.status(404).json({'status':'error','error':'no one is login'});
     }
 });
 
