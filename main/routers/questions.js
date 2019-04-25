@@ -210,7 +210,7 @@ router.delete('/:id' ,jsonParser,function(req,res){
             request({  
                 url: process.env.SERVER_MEDIA+'/deletemedia',
                 method: 'POST',
-                json:req.body
+                json:body
             }, function(err,resp,body){
                 res.sendStatus(200);
             });
