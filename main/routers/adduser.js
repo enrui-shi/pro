@@ -16,7 +16,6 @@ router.post('/',jsonParser,function(req,res){
     if(process.env.DEBUG){
         console.log("data: ", data)
     }
-    req.session.status = 'offline';
     var options = {  
         url: process.env.SERVER_USER+"/adduser",
         method: 'POST',
