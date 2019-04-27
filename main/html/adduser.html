@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="routers/adduser.js"></script>
+        <link rel="stylesheet" type="text/css" href="../style/style.css">
+    </head>
+    <body>
+        <h1>Sign Up</h1>
+        <div class="adduser_form">
+            <form id="adduser" action="/verify" method="post">
+                Username:<br>
+                <input id="username" type="text" placeholder="Username" name="username">
+                <br>
+                Email:<br><input id="email" type="text" placeholder="e-mail" name="email">
+                <br>
+                Password:<br><input id="password" type="password" placeholder="Password" name="psw">
+                <br>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </body>
+</html>
