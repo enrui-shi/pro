@@ -17,7 +17,7 @@ app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false 
 //question
 app.use('/questions', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
 app.use('/answers', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
-app.use('/search', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
+app.use('/search', proxy({ target: process.env.SERVER_SEARCH, changeOrigin: false }));
 //user
 app.use('/user', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
 app.use('/adduser', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
