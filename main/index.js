@@ -17,6 +17,7 @@ app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false 
 //question
 app.use('/questions', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
 app.use('/answers', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
+app.use('/search', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
 //user
 app.use('/user', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
 app.use('/adduser', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
@@ -56,7 +57,7 @@ app.use(cookieParser())
 //var adduser = require('./routers/adduser.js');
 //var verify = require('./routers/verify.js');
 //var questions = require('./routers/questions.js');
-var search = require('./routers/search.js')
+//var search = require('./routers/search.js')
 //var answers = require('./routers/answers.js')
 //var media = require('./routers/media.js');
 //var addmedia = require('./routers/addmedia.js');
