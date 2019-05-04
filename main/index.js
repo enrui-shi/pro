@@ -71,7 +71,7 @@ var reset = require('./routers/reset.js');
 //app.use('/verify', verify);
 //app.use('/logout', logout);
 //app.use('/questions',questions);
-app.use('/search',search);
+//app.use('/search',search);
 //app.use('/user',user);
 //app.use('/addmedia',addmedia);
 //app.use('/media',media);
