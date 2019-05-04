@@ -11,12 +11,12 @@ var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/',jsonParser,function(req,res){
-        if(req.session.status=='online'){
-            console.log(req.session.current_user+" logout");
-            req.session = null;
+        if(req.cookies.session.current_user){
+            console.log(req.cookies.session.current_user+" logout");
+            req.cookies.session.current_user = null;
             res.json({'status':'OK'});
         }else{
-            res.json({'status':'error','error':'no one is login'});
+            res.status(404).json({'status':'error','error':'no one is login'});
         }
 });
 

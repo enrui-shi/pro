@@ -3,10 +3,12 @@ const app = express();
 const path = require('path');
 const port = 3000;
 const MongoClient = require('mongodb').MongoClient;
+var cookieParser = require('cookie-parser')
 //get env
 require('dotenv').config()
 //file dependecy
 
+app.use(cookieParser())
 //routers
 var login = require('./routers/login.js');
 var logout = require('./routers/logout.js');

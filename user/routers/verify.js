@@ -11,7 +11,7 @@ router.post('/',jsonParser,function(req,res){
     db.collection('users').find({ 'email': req.body['email'] 
     }).toArray(function(err, result){
         if(err){
-            res.json({'status':'error','error':err});
+            res.status(404).json({'status':'error','error':err});
         }else{
             if(result.length==1){
                 result=result[0];
@@ -24,10 +24,10 @@ router.post('/',jsonParser,function(req,res){
                     })
                     res.json({'status':"OK"});
                 }else{
-                    res.json({'status':'error','error':'wrong key'})     
+                    res.status(404).json({'status':'error','error':'wrong key'})     
                 }
             }else{
-                res.json({'status':'error','error':'can not find email'})
+                res.status(404).json({'status':'error','error':'can not find email'})
             }
         }
     });

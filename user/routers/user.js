@@ -8,7 +8,7 @@ router.get('/:username',jsonParser,function(req,res){
     var db = req.app.locals.db
     db.collection('users').find({'username':req.params.username}).toArray(function(err,result){
         if(result.length != 1){
-            return res.json({'status':'error','error':'user not found'})
+            return res.status(404).json({'status':'error','error':'user not found'})
         }else{
             var user = result[0]
             delete user._id
@@ -36,7 +36,7 @@ router.get('/:username/questions',jsonParser,function(req,res){
             }
             return res.json({'status':'OK', 'questions': question_ids})
         }else{
-            return res.json({'status':'error','error':'wrong'})
+            return res.status(404).json({'status':'error','error':'wrong'})
         }
     });
 });
@@ -56,7 +56,7 @@ router.get('/:username/answers',jsonParser,function(req,res){
             }
             return res.json({'status':'OK', 'answers': answer_ids})
         }else{
-            return res.json({'status':'error','error':'wrong'})
+            return res.status(404).json({'status':'error','error':'wrong'})
         }
     });
 });

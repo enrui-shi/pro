@@ -20,14 +20,15 @@ router.post('/',jsonParser,function(req,res){
             if(result.password == req.body.password && result.valide == 'true'){
                 //login
                 console.log(result.username+" logined");
+                res.cookie('session', { current_user: req.body.username });
                 res.json({'status':"OK"});
             }else{
                 console.log(result.username+' false to login');
-                res.json({'status':"error","error":'wrong password or account not valide'})
+                res.status(404).json({'status':"error","error":'wrong password or account not valide'})
             }
         }else{
             console.log("error: find "+result.length+" result");
-            res.json({'status':"error","error":'can not find user'})
+            res.status(404).json({'status':"error","error":'can not find user'})
         }
     });
 })

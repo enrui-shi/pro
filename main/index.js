@@ -4,8 +4,6 @@ const app = express();
 var cookieParser = require('cookie-parser')
 const path = require('path');
 const port = 3000;
-var expressip = require('express-ip');
-app.use(expressip().getIpInfoMiddleware)
 //get env
 require('dotenv').config()
 //file dependecy
@@ -13,9 +11,18 @@ require('dotenv').config()
 
 
 //proxy
-app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
-app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: true }));
-//app.use('/question/:id', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: true }));
+//media
+app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false }));
+app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false }));
+//question
+app.use('/question', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
+app.use('/answers', proxy({ target: process.env.SERVER_QUESTION, changeOrigin: false }));
+//user
+app.use('/user', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
+app.use('/adduser', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
+app.use('/login', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
+app.use('/logout', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
+app.use('/verify', proxy({ target: process.env.SERVER_USER, changeOrigin: false }));
 //cookie
 app.use(cookieParser())
 //var cookieParser = require('cookie-parser');
@@ -42,27 +49,29 @@ app.use(cookieParser())
 //     keys: ['lalala'],
 //   }))
 //routers
-var user = require('./routers/user.js');
-var login = require('./routers/login.js');
-var logout = require('./routers/logout.js');
-var adduser = require('./routers/adduser.js');
-var verify = require('./routers/verify.js');
-var questions = require('./routers/questions.js');
+
+//var user = require('./routers/user.js');
+//var login = require('./routers/login.js');
+//var logout = require('./routers/logout.js');
+//var adduser = require('./routers/adduser.js');
+//var verify = require('./routers/verify.js');
+//var questions = require('./routers/questions.js');
 var search = require('./routers/search.js')
-var answers = require('./routers/answers.js')
+//var answers = require('./routers/answers.js')
 //var media = require('./routers/media.js');
 //var addmedia = require('./routers/addmedia.js');
 var reset = require('./routers/reset.js');
 
 //api endpoint
-app.use('/login', login);
-app.use('/answers',answers);
-app.use('/adduser', adduser);
-app.use('/verify', verify);
-app.use('/logout', logout);
-app.use('/questions',questions);
+
+//app.use('/login', login);
+//app.use('/answers',answers);
+//app.use('/adduser', adduser);
+//app.use('/verify', verify);
+//app.use('/logout', logout);
+//app.use('/questions',questions);
 app.use('/search',search);
-app.use('/user',user);
+//app.use('/user',user);
 //app.use('/addmedia',addmedia);
 //app.use('/media',media);
 app.use('/reset',reset)
