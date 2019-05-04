@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="routers/search.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../style/style.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" onclick="window.location.href='search.html'">Search</a>
+            <a onclick="window.location.href='questions.html'">Question</a>
+            <a onclick="window.location.href='answers.html'">Answer</a>
+            <a onclick="window.location.href='media.html'">Media</a>
+            <a onclick="window.location.href='user.html'">User</a>
+        </div>
+    </header>
+    <body>
+        <h1><i class="fa fa-search"></i> Search for questions</h1>
+        <div class="search_form">
+            <form id="search" action="/search" method="post">
+                Timestamp:<br>
+                <input id="timestamp" type="text" placeholder="Search question from this time and earlier" name="timestamp">
+                <br>
+                Limit:<br>
+                <input id="limit" type="text" placeholder="Number of questions you want" name="limit">
+                <br>
+                Sort by:<br>
+                <input id="sort_by" type="text" placeholder="enter timestamp or score" name="sort_by">           
+                <br>
+                Search Query:<br>
+                <input id="search_query" type="text" placeholder="Search what you want to ask" name="search-query" style="height: 150px;">
+                <br>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>    
+    </body>
+</html>

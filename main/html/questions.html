@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questions</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="routers/questions.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../style/style.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a onclick="window.location.href='search.html'">Search</a>
+            <a class="active" onclick="window.location.href='questions.html'">Question</a>
+            <a onclick="window.location.href='answers.html'">Answer</a>
+            <a onclick="window.location.href='media.html'">Media</a>
+            <a onclick="window.location.href='user.html'">User</a>
+        </div>
+    </header>
+    <body>
+        <div class="container">
+            <div class="leftpane">
+                <h1>Add a new question</h1>
+                <div class="addquestion_form">
+                    <form id="addquestion" action="/question/add" method="post">
+                        Title:<br>
+                        <input id="title" type="text" placeholder="Title of the question" name="title">
+                        <br>
+                        Body:<br>
+                        <input id="body" type="text" placeholder="Content of the question" name="body" style="height: 150px;">
+                        <br>
+                        Tags:<br>
+                        <input id="tags" type="text" placeholder="An array of tags" name="tags">           
+                        <br>
+                        Media:<br>
+                        <input id="media" type="text" placeholder="An array of media ID you want to add to this question" name="media" >
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div> 
+            </div>
+            <div class="middlepane">
+                <h1>Get question</h1>
+                <div class="getquestion_form">
+                    <form id="getquestion" action="/question/:id" method="get">
+                        Question ID:<br>
+                        <input id="q_ID" type="text" placeholder="ID of the question" name="q_ID">
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div> 
+                <h1>Delete question</h1>
+                <div class="deletequestion_form">
+                    <form id="deletequestion" action="/question/:id" method="delete">
+                        Question ID:<br>
+                        <input id="q_ID" type="text" placeholder="ID of the question" name="q_ID">
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+                <h1>Upvote or downvote question</h1> 
+                <div class="upvotequestion_form">
+                    <form id="upvotequestion" action="/question/:id/upvote" method="post">
+                        Question ID:<br>
+                        <input id="q_ID" type="text" placeholder="ID of the question" name="q_ID">
+                        <br>
+                        <h1><input type="submit" value="Upvote" />    <i class="fa fa-thumbs-o-up"></i></h1>
+                        <h1><input type="submit" value="downvote" />    <i class="fa fa-thumbs-o-down"></i></h1>
+                    </form>
+                </div>
+            </div>
+            <div class="rightpane">
+                <h1>Add the answer to the question</h1>
+                <div class="addanswer_form">
+                    <form id="addanswer" action="/question/:id/answers/add" method="post">
+                        Question ID:<br>
+                        <input id="q_ID" type="text" placeholder="ID of the question" name="q_ID">
+                        <br>
+                        Body:<br>
+                        <input id="ans_body" type="text" placeholder="Body of the answer" name="ans_body" style="height:130px;">
+                        <br>
+                        Media:<br>
+                        <input id="ans_media" type="text" placeholder="ID of media you want to add to the answer" name="ans_media">
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+                <h1>Get the answer to the question</h1>
+                <div class="getanswer_form">
+                    <form id="getanswer" action="/question/:id/answers" method="get">
+                        Question ID:<br>
+                        <input id="q_ID" type="text" placeholder="ID of the question" name="q_ID">
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>  
+            </div>
+        </div>
+    </body>
+</html>

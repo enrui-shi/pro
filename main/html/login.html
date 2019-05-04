@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>HELLO WORLD</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script/login.js"></script>
-</head>
-<body>
+  <head>
+      <title>HELLO WORLD</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="routers/login.js"></script>
+      <link rel="stylesheet" type="text/css" href="../style/style.css">
+  </head>
+  <body>
     <h1>WELCOME</h1>
     <div class="login_form">
-    <form id="login" action="/login" method="post">
-      Username:<br><input id="username" type="text" placeholder="Username" name="username">
-      <br>
-      Password:<br><input id="password" type="password" placeholder="Password" name="psw">
-      <br>
-      <input type="submit" value="Sign In" />
-    </form>
-  </div>
-  <button class="btn" onclick="window.location.href='/adduser'">Sign Up</button>
-</body>
+      <form id="login" action="/login" method="post">
+        Username:<br><input id="username" type="text" placeholder="Username" name="username">
+        <br>
+        Password:<br><input id="password" type="password" placeholder="Password" name="psw">
+        <br>
+        <input type="submit" value="Sign In"/>
+        <br>
+        <br>
+      </form>
+    </div>
+    <button onclick="window.location.href='/adduser'">Sign Up</button>
+  </body>
 </html>
