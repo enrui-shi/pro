@@ -23,8 +23,8 @@
                         console.log(data);
                     }
                 },
-                error: function(data){
-                    alert(data);
+                error: function(jqXHR, textStatus, errorThrown){
+                    alert(jqXHR);
                 }
             })
             })
