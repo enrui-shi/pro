@@ -24,6 +24,7 @@
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR)
                     alert(jqXHR.responseJSON);
                 }
             })
