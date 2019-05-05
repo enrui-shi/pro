@@ -6,7 +6,7 @@
             $(document).ready(function () {
             var adduser_form = $("#adduser");
             adduser_form.submit(function (e) {
-            var adduser_data = {username: $('#name').val(), password: $('#password').val(), email: $('#email').val};
+            var adduser_data = {username: $('#name').val(), password: $('#password').val(), email: $('#email').val()};
             console.log(adduser_data.username, " ", adduser_data.password)
             e.preventDefault();
             $.ajax({
