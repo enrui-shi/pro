@@ -2,7 +2,33 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="/script/login.js"></script>
+        <script>
+        $(document).ready(function () {
+            var login_form = $("#login");
+            login_form.submit(function (e) {
+            var login_data = {username: $('#username').val(), password: $('#password').val()};
+            console.log(login_data.userEmail, " ", login_data.password)
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'http://130.245.171.196/login',
+                contentType: "application/json; charset=utf-8",
+                    headers: {
+                    Accept: "application/json; charset=utf-8"
+                },
+                data: JSON.stringify(login_data),
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 'error') {
+                        alert(data.error);
+                    } else {
+                        console.log(data);
+                    }
+                }
+            })
+        })
+});
+        </script>
     </head>
     <body>
     <div>
