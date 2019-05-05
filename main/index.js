@@ -81,8 +81,14 @@ app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/html/login.html'));
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
-
-
+app.get('/signup',function(req,res){
+    res.sendFile(path.join(__dirname+'/html/adduser.html'));
+    //res.sendFile(path.join(__dirname+'/html/index.html'));
+})
+app.get('/main',function(req,res){
+    res.sendFile(path.join(__dirname+'/html/main.html'));
+    //res.sendFile(path.join(__dirname+'/html/index.html'));
+})
 app.listen(port,'0.0.0.0', () => {
     return console.log(`App listening on port ${port}!`);
 })
