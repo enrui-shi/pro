@@ -89,6 +89,10 @@ app.get('/main',function(req,res){
     res.sendFile(path.join(__dirname+'/html/main.html'));
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
+app.get('/verifypage',function(req,res){
+    res.sendFile(path.join(__dirname+'/html/verify.html'));
+    //res.sendFile(path.join(__dirname+'/html/index.html'));
+})
 app.listen(port,'0.0.0.0', () => {
     return console.log(`App listening on port ${port}!`);
 })

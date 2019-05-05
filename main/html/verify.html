@@ -3,42 +3,43 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script>
-            $(document).ready(function () {
-            var adduser_form = $("#adduser");
-            adduser_form.submit(function (e) {
-            var adduser_data = {username: $('#name').val(), password: $('#password').val(), email: $('email')};
-            console.log(adduser_data.username, " ", adduser_data.password)
+        $(document).ready(function () {
+            var verify_form = $("#verify");
+            verify_form.submit(function (e) {
+            var verify_data = {email: $('#email').val(), key: $('#key').val()};
+            //console.log(login_data.userEmail, " ", login_data.password)
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: 'http://130.245.171.196/adduser',
+                url: 'http://130.245.171.196/verify',
                 contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(adduser_data),
+                    headers: {
+                    Accept: "application/json; charset=utf-8"
+                },
+                data: JSON.stringify(verify_data),
                 dataType: "json",
                 success: function (data) {
                     if (data.status == 'error') {
                         alert(data.error);
                     } else {
-                        window.location.replace("/verifypage");
                         console.log(data);
+                        window.location.replace("/");
                     }
                 }
             })
-            })
-            });
+        })
+});
         </script>
     </head>
     <body>
     <div>
-        <h1>Sign Up Page</h1>
-        <form id="adduser">
-            name: <input id = "name" type="text" name="name"> <br>
+        <form id="verify">
             email: <input id = "email" type="text" name="email"> <br>
-            password: <input id="password" type="password" name="password"><br>
-            <input type="submit" value="Sign Up"/>
+            key: <input id="key" type="text" name="key"><br>
+            <input type="submit" value="Verify"/>
         </form>
-        <div >Need Verify?
-            <a onclick="window.location.replace('/verifypage')"><u>Verify</u></a>
+        <div >Don't have an account?
+            <a onclick="window.location.replace('/signup')"><u>Sign Up</u></a>
         </div>
         <div >Want to Login?
             <a onclick="window.location.replace('/')"><u>Login</u></a>
