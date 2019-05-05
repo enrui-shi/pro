@@ -82,10 +82,6 @@ app.get('/',function(req,res){
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
 
-app.get('/adduser',function(req,res){
-    res.sendFile(path.join(__dirname+'/html/adduser.html'));
-    //res.sendFile(path.join(__dirname+'/html/index.html'));
-})
 
 app.listen(port,'0.0.0.0', () => {
     return console.log(`App listening on port ${port}!`);

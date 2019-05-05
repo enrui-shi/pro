@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var login_form = $("#login");
     login_form.submit(function (e) {
-        var login_data = {userEmail: $('#email').val(), password: $('#password').val()};
+        var login_data = {username: $('#username').val(), password: $('#password').val()};
         console.log(login_data.userEmail, " ", login_data.password)
         e.preventDefault();
         $.ajax({
@@ -17,7 +17,6 @@ $(document).ready(function () {
                 if (data.status == 'error') {
                     alert(data.error);
                 } else {
-                    window.location.replace("/main");
                     console.log(data);
                 }
             }
