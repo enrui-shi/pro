@@ -6,7 +6,7 @@
             $(document).ready(function () {
             var adduser_form = $("#adduser");
             adduser_form.submit(function (e) {
-            var adduser_data = {username: $('#name').val(), password: $('#password').val(), email: $('email')};
+            var adduser_data = {username: $('#name').val(), password: $('#password').val(), email: $('#email').val};
             console.log(adduser_data.username, " ", adduser_data.password)
             e.preventDefault();
             $.ajax({
@@ -33,7 +33,7 @@
         <h1>Sign Up Page</h1>
         <form id="adduser">
             name: <input id = "name" type="text" name="name"> <br>
-            email: <input id = "email" type="text" name="email"> <br>
+            email: <input id = "email" type="email" name="email"> <br>
             password: <input id="password" type="password" name="password"><br>
             <input type="submit" value="Sign Up"/>
         </form>
