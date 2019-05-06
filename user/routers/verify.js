@@ -7,6 +7,7 @@ const path = require('path');
 router.post('/',jsonParser,function(req,res){
     //console.log(data.email);
     //console.log(data['key']);
+    console.log(req.body.email," try to verify")
     var db = req.app.locals.db;
     db.collection('users').find({ 'email': req.body['email'] 
     }).toArray(function(err, result){
