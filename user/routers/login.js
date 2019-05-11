@@ -23,7 +23,7 @@ router.post('/',jsonParser,function(req,res){
                 res.cookie('session', { current_user: req.body.username });
                 res.json({'status':"OK"});
             }else{
-                console.log(result.username+' false to login');
+                console.log(result.username+' false to login. Valide:', result.valide );
                 res.status(404).json({'status':"error","error":'wrong password or account not valide'})
             }
         }else{
