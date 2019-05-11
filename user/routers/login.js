@@ -24,11 +24,11 @@ router.post('/',jsonParser,function(req,res){
                 res.json({'status':"OK"});
             }else{
                 console.log(result.username+' false to login. Valide:', result.valide );
-                res.status(404).json({'status':"error","error":'wrong password or account not valide'})
+                res.status(405).json({'status':"error","error":'wrong password or account not valide'})
             }
         }else{
             console.log("error: find "+result.length+" result");
-            res.status(404).json({'status':"error","error":'can not find user'})
+            res.status(406).json({'status':"error","error":'can not find user'})
         }
     });
 })

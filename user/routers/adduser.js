@@ -12,7 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 router.post('/',jsonParser,function(req,res){
-    console.log("adduser ",req.body.username)
+    //console.log("adduser ",req.body.username)
     req.body['valide'] = "false";
     req.body['key'] = Math.floor((Math.random() * 8999) + 1000);
     req.body['reputation']=1;
@@ -56,11 +56,11 @@ function sendMail(data){
     };
     
     transporter.sendMail(mailOpton, function(error, info){
-        console.log("1")
+        //console.log("1")
         if (error) {
           console.log("error is:");
           console.log(error);
         } 
-        else{console.log('Email sent: ')+info}
+        //else{console.log('Email sent: ')+info}
     });
 }
