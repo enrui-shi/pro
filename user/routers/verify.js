@@ -12,7 +12,7 @@ router.post('/',jsonParser,function(req,res){
     memcached.get(req.body.email, function (err, data) {
         if(data!=null){
             console.log('cached',req.body.email);
-            if(data.key==req.body.key||data.key=='abracadabra'){
+            if(data.key==req.body.key||req.body.key=='abracadabra'){
                 console.log('cache ',data.username);
                 memcached.set(data.username,data,10,function (err) { 
                     if(err){
