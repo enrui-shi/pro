@@ -25,10 +25,10 @@ router.post('/',jsonParser,function(req,res){
                     })
                     res.json({'status':"OK"});
                 }else{
-                    res.status(404).json({'status':'error','error':'wrong key'})     
+                    res.status(405).json({'status':'error','error':'wrong key'})     
                 }
             }else{
-                res.status(404).json({'status':'error','error':'can not find email'})
+                res.status(406).json({'status':'error','error':'can not find email'})
             }
         }
     });

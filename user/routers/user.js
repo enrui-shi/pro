@@ -4,7 +4,7 @@ var router = express.Router();
 var jsonParser = bodyParser.json()
 
 router.get('/:username',jsonParser,function(req,res){
-    console.log("find a user")
+    //console.log("find a user")
     var db = req.app.locals.db
     db.collection('users').find({'username':req.params.username}).toArray(function(err,result){
         if(result.length != 1){
@@ -24,7 +24,7 @@ router.get('/:username',jsonParser,function(req,res){
 });
 
 router.get('/:username/questions',jsonParser,function(req,res){
-    console.log("find question posed by user")
+    //console.log("find question posed by user")
     var db = req.app.locals.db
     db.collection('questions').find({'user.username':req.params.username}).toArray(function(err,result){
         if(result.length == 0){
@@ -42,7 +42,7 @@ router.get('/:username/questions',jsonParser,function(req,res){
 });
 
 router.get('/:username/answers',jsonParser,function(req,res){
-    console.log("find user answer")
+    //console.log("find user answer")
     var db = req.app.locals.db
     db.collection('answers').find({'user':req.params.username}).toArray(function(err,result){
         if(result.length == 0){
