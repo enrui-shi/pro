@@ -15,7 +15,9 @@ router.post('/',jsonParser,function(req,res){
     console.log(req.body.username+" try to loging: ")
     var memcached=req.app.locals.memcached;
     memcached.get(req.body.username, function (err, data) {
+        console.log('in memcached');
         if(data==null){
+            console.log('not cached');
             db.collection('users').find({ 'username': req.body['username'] 
             }).toArray(function(err, result){
                 if(result.length==1){
@@ -35,6 +37,7 @@ router.post('/',jsonParser,function(req,res){
                 }
             });
         }else{
+            console.log('cached')
             if(data.password == req.body.password){
                 //login
                 console.log(data.username+" logined");
