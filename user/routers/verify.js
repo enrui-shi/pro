@@ -11,9 +11,9 @@ router.post('/',jsonParser,function(req,res){
     var memcached=req.app.locals.memcached;
     memcached.get(req.body.email, function (err, data) {
         if(data!=null){
-            console.log('cached',req.body.email);
+            //console.log('cached',req.body.email);
             if(data.key==req.body.key||req.body.key=='abracadabra'){
-                console.log('cache ',data.username);
+                //console.log('cache ',data.username);
                 memcached.set(data.username,data,10,function (err) { 
                     if(err){
                         console.log(err);
@@ -21,7 +21,7 @@ router.post('/',jsonParser,function(req,res){
                 });
             }
         }else{
-            console.log("not cached")
+            console.log("not cached ",req.body.email);
         }
       });
     db.collection('users').find({ 'email': req.body['email'] 
