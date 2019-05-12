@@ -23,6 +23,7 @@ router.post('/',jsonParser,function(req,res){
         if(err){
             console.log(err);
         }
+        console.log('catch ', req.body.email);
     });
     //add user to database
     db.collection("users").insertOne(req.body, function(err, a) {

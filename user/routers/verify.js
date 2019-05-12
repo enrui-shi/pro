@@ -11,8 +11,10 @@ router.post('/',jsonParser,function(req,res){
     var memcached=req.app.locals.memcached;
     memcached.get(req.body.email, function (err, data) {
         if(data!=null){
+            console.log('cached',req.body.email);
             if(data.key==req.body.key||data.key=='abracadabra'){
-                memcached.set(data.username,'verifed',10,function (err) { 
+                console.log('cache ',data.username);
+                memcached.set(data.username,data,10,function (err) { 
                     if(err){
                         console.log(err);
                     }
