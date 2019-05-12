@@ -3,7 +3,10 @@ const app = express();
 const path = require('path');
 const port = 3000;
 const MongoClient = require('mongodb').MongoClient;
+var Memcached = require('memcached');
+var memcached = new Memcached('localhost:11211');
 var cookieParser = require('cookie-parser')
+app.locals.memcached = memcached; 
 //get env
 require('dotenv').config()
 //file dependecy

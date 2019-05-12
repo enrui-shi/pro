@@ -8,7 +8,20 @@ router.post('/',jsonParser,function(req,res){
     //console.log(data.email);
     //console.log(data['key']);
     //console.log(req.body.email," try to verify")
-    var db = req.app.locals.db;
+    var memcached=req.app.locals.memcached;
+    memcached.get(req.body.email, function (err, data) {
+        if(data!=null){
+            if(data.key==req.body.key||data.key=='abracadabra'){
+                memcached.set(data.username,'verifed',10,function (err) { 
+                    if(err){
+                        console.log(err);
+                    }
+                });
+            }
+        }else{
+            console.log("not cached")
+        }
+      });
     db.collection('users').find({ 'email': req.body['email'] 
     }).toArray(function(err, result){
         if(err){

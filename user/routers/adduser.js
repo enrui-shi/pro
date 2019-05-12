@@ -18,6 +18,12 @@ router.post('/',jsonParser,function(req,res){
     req.body['reputation']=1;
     //console.log("data: ", data)
     var db = req.app.locals.db;
+    var memcached=req.app.locals.memcached;
+    memcached.set(req.body.email,req.body,10,function (err) { 
+        if(err){
+            console.log(err);
+        }
+    });
     //add user to database
     db.collection("users").insertOne(req.body, function(err, a) {
         if (err) {
