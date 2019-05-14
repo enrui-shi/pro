@@ -12,6 +12,8 @@ require('dotenv').config()
 
 //proxy
 //media
+app.use(express.static(path.join(__dirname, 'script')));
+
 app.use('/addmedia', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false }));
 app.use('/media', proxy({ target: process.env.SERVER_MEDIA, changeOrigin: false }));
 //question
