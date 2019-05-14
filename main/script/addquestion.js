@@ -13,7 +13,7 @@ $(document).ready(function () {
 
         var question_data = {title: $('#title').val(), body: $('#body').val(), tags:newtags};
         
-        console.log(login_data.userEmail, " ", login_data.password)
+        console.log(question_data)
         $.ajax({
             type: 'post',
             url: '/question/add',
@@ -21,7 +21,7 @@ $(document).ready(function () {
             headers: {
                 Accept: "application/json; charset=utf-8"
             },
-            data: JSON.stringify(login_data),
+            data: JSON.stringify(question_data),
             dataType: "json",
             success: function (data) {
                 if (data.status == 'error') {
