@@ -3,7 +3,7 @@ $(document).ready(function () {
     search_form.submit(function(e) {
         e.preventDefault();
         var tags = $('#tags').val().split(',')
-        var search_data = {q: $('#query').val(), limit: $('#limit').val().parseInt(), has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:tags};
+        var search_data = {q: $('#query').val(), limit: parseInt($('#limit').val(),10), has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:tags};
         console.log(search_data);
         $.ajax({
             type: 'post',
