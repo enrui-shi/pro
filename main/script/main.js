@@ -4,7 +4,7 @@ $(document).ready(function () {
     search_form.submit(function(e) {
         e.preventDefault();
         var tags = $('#tags').val().split(',');
-        var newtags=null;
+        var newtags=[];
         for(var i=0;i<tags.length;i++){
             if(tags[i]!=""){
                 newtags.push(tags[i])
