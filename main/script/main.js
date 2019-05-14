@@ -43,7 +43,6 @@ function showQuestion(json){
     var ul = '<ul>';
     for(var i=0;i<json.length;i++){
         console.log(json[i]);
-        var text = 
         ul +=  '<li>'+'<h3>'+json[i].title+'</h3>'+'<br>'+ 'tags:'+ json[i].tags +'</br>'+json[i].body +'</li>';
             //$(document.createElement('li')).text("title: " +json[i].title +"\n"+"body: "+json[i].body)
     }
