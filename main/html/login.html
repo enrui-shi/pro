@@ -23,6 +23,7 @@
                         alert(data.error);
                     } else {
                         console.log(data);
+                        window.location.replace("/main");
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown){

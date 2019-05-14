@@ -25,6 +25,7 @@ $(document).ready(function () {
                     alert(data.error);
                 } else {
                     //console.log(data.questions)
+                    window.location.replace("/main");
                     showQuestion(data.questions)
                 }
             }
