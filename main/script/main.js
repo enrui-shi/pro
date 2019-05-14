@@ -50,7 +50,7 @@ function showQuestion(json){
     var ul = '<ul>';
     for(var i=0;i<json.length;i++){
         console.log(json[i]);
-        ul +=  '<li>'+'<h3>'+json[i].title+'</h3>'+'<br>'+'post by'+json[i]+user+'<br>'+ 'tags:'+ json[i].tags +'</br>'+json[i].body +'</li>';
+        ul +=  '<li>'+'<h3>'+json[i].title+'</h3>'+'<br>'+'post by'+json[i].user+'<br>'+ 'tags:'+ json[i].tags +'</br>'+json[i].body +'</li>';
             //$(document.createElement('li')).text("title: " +json[i].title +"\n"+"body: "+json[i].body)
     }
     ul += "</ul>";
