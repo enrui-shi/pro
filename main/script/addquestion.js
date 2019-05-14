@@ -16,7 +16,7 @@ $(document).ready(function () {
         console.log(question_data)
         $.ajax({
             type: 'post',
-            url: '/question/add',
+            url: '/questions/add',
             contentType: "application/json; charset=utf-8",
             headers: {
                 Accept: "application/json; charset=utf-8"
