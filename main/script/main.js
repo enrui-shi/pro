@@ -24,7 +24,7 @@ $(document).ready(function () {
                 if (data.status == 'error') {
                     alert(data.error);
                 } else {
-                    console.log(data.questions)
+                    //console.log(data.questions)
                     showQuestion(data.questions)
                 }
             }
