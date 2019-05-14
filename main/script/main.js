@@ -42,7 +42,7 @@ function showQuestion(json){
     for(var i=0;i<json.length;i++){
         console.log(json[i])
         ul.append(
-            $(document.createElement('li')).text("1")
+            $(document.createElement('li')).text(json[i])
         );
     }
 }
