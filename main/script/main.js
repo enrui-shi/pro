@@ -10,6 +10,9 @@ $(document).ready(function () {
                 newtags.push(tags[i])
             }
         }
+        if(newtags==[]){
+            newtags==null
+        }
         var search_data = {q: $('#query').val(), limit: parseInt($('#limit').val(),10), has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:newtags};
         console.log(search_data);
         $.ajax({
