@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="/addquestion"></script>
+    </head>
+    <body>
+    <div>
+        <h1>Add Question</h1>
+        <form id="question">
+            title: <input id = "title" type="text" name="title"> <br>
+            body: <input id = "body" type="text" name="body"> <br>
+            tags(split by ','): <input id="tags" type="text" name="tags"><br>
+            <input type="submit" value="POST"/>
+        </form>
+        <div >Back to Main?
+            <a onclick="window.location.replace('/')"><u>Main</u></a>
+        </div>
+    </div>
+       
+    </body>
+</html>
