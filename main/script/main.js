@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 
 function showQuestion(json){
-    $("#search-result").clear();
+    $("#search-result").empty();
     var ul = '<ul>';
     for(var i=0;i<json.length;i++){
         console.log(json[i]);
