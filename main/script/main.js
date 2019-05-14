@@ -25,7 +25,7 @@ $(document).ready(function () {
                     alert(data.error);
                 } else {
                     //console.log(data.questions)
-                    window.location.replace("/main");
+                    //window.location.replace("/main");
                     showQuestion(data.questions)
                 }
             }
@@ -39,13 +39,14 @@ $(document).ready(function () {
 
 
 function showQuestion(json){
-    var ul = $('<ul>').appendTo('body');
+    $("#search-result").clear();
+    var ul = '<ul>';
     for(var i=0;i<json.length;i++){
-        console.log(json[i])
+        console.log(json[i]);
         var text = 
-        ul.append(
-            $('<li>'+'<h3>'+json[i].title+'</h3>'+'<br>'+ 'tags:'+ json[i].tags +'</br>'+json[i].body +'</li>')
+        ul +=  '<li>'+'<h3>'+json[i].title+'</h3>'+'<br>'+ 'tags:'+ json[i].tags +'</br>'+json[i].body +'</li>';
             //$(document.createElement('li')).text("title: " +json[i].title +"\n"+"body: "+json[i].body)
-        );
     }
+    ul += "</ul>";
+    $("#search-result").append(ul);
 }
