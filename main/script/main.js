@@ -39,10 +39,10 @@ $(document).ready(function () {
 
 function showQuestion(json){
     var ul = $('<ul>').appendTo('body');
-    $(json.items).each(function(index, item) {
-        console.log(item)
+    for(var i=0;i<json.length;i++){
+        console.log(json[i])
         ul.append(
             $(document.createElement('li')).text("1")
         );
-    })
+    }
 }
