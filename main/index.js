@@ -80,7 +80,7 @@ var reset = require('./routers/reset.js');
 app.use('/reset',reset)
 
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/html/login.html'));
+    res.sendFile(path.join(__dirname+'/html/main.html'));
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
 app.get('/signup',function(req,res){
@@ -93,6 +93,10 @@ app.get('/main',function(req,res){
 })
 app.get('/verifypage',function(req,res){
     res.sendFile(path.join(__dirname+'/html/verify.html'));
+    //res.sendFile(path.join(__dirname+'/html/index.html'));
+})
+app.get('/signin',function(req,res){
+    res.sendFile(path.join(__dirname+'/html/login.html'));
     //res.sendFile(path.join(__dirname+'/html/index.html'));
 })
 app.listen(port,'0.0.0.0', () => {
