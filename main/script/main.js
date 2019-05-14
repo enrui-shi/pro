@@ -41,8 +41,9 @@ function showQuestion(json){
     var ul = $('<ul>').appendTo('body');
     for(var i=0;i<json.length;i++){
         console.log(json[i])
+        var text = 
         ul.append(
-            $(document.createElement('li')).text(json[i])
+            $(document.createElement('li')).text(json[i].title)
         );
     }
 }
