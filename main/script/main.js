@@ -13,7 +13,7 @@ $(document).ready(function () {
         console.log(search_data);
         $.ajax({
             type: 'post',
-            url: 'http://130.245.171.196/search',
+            url: '/search',
             contentType: "application/json; charset=utf-8",
             headers: {
                 Accept: "application/json; charset=utf-8"
