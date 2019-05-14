@@ -1,7 +1,8 @@
 $(document).ready(function () {
     var search_form = $("#search");
     search_form.submit(function (e) {
-        var search_data = {q: $('#query').val(), limit: $('#limit').val(),has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked};
+        var tags = $('#tags').val.split(',')
+        var search_data = {q: $('#query').val(), limit: $('#limit').val(),has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:tags};
         console.log(search_data)
         e.preventDefault();
         $.ajax({
