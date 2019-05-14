@@ -40,6 +40,7 @@ $(document).ready(function () {
 function showQuestion(json){
     var ul = $('<ul>').appendTo('body');
     $(json.items).each(function(index, item) {
+        console.log(item)
         ul.append(
             $(document.createElement('li')).text("1")
         );
