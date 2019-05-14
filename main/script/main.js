@@ -2,12 +2,14 @@ $(document).ready(function () {
     var search_form = $("#search");
     search_form.submit(function(e) {
         e.preventDefault();
-        if($('#tags').val()!=NaN){
-            var tags = $('#tags').val().split(',')
-        }else{
-            var tags=null
+        var tags = $('#tags').val().split(',');
+        var newtags=null;
+        for(var i=0;i<tags.length;i++){
+            if(tags[i]!=""){
+                newtags.push(tags[i])
+            }
         }
-        var search_data = {q: $('#query').val(), limit: parseInt($('#limit').val(),10), has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:tags};
+        var search_data = {q: $('#query').val(), limit: parseInt($('#limit').val(),10), has_media: $("#has_media")[0].checked , accepted: $("#accepted")[0].checked, tags:newtags};
         console.log(search_data);
         $.ajax({
             type: 'post',
